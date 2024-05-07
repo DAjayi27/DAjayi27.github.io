@@ -18,7 +18,7 @@
     </header>
     
     <!--  main content section -->
-    <main>
+    <main class="main_section">
 
         <!-- About Section Starts -->
 
@@ -27,7 +27,9 @@
            <div class="info_section">
             
                 <div class="name_intro">
-                    Hi I'm Darasimi
+                    <span class="greeting_text">Hi,i'm</span> 
+                    <br> 
+                    <span class="name">Darasimi</span>
                 </div>
 
                 <div>
@@ -98,13 +100,27 @@
             </div>
 
             <div class="project_entry">
+                <div class="project_text">
+                    <div class="project_title"> Graph Vizualizer</div>
+                    <div class="project_tools"> Made With: Java </div>
+                    <div class="project_description">
+                        This is a Vizualization program that can vizually represent the connections in Graph. The main goal of the project
+                        is to make  debugging and analyzing graph connections easier and faster, whenver i use them in anyother project.It works well
+                        with both directed and undirected graphs.
+                    </div>
+                </div>
+        
+                <img src="assets/images/project_placeholder.jpg" alt="">
+            </div>
+
+            <div class="project_entry">
 
                 <div class="project_text">
                     <div class="project_title"> CSV to SQL parser</div>
                     <div class="project_tools"> Made With: Python </div>
                     <div class="project_description">
-                        I needed a way to convert 
-                        <br>It is capable of basic airthmethic operations, branching and looping operations. 
+                        I needed a way to convert a csv file into insert statements for a database table.
+                        <br>It currently only works with MySQL 
                     </div>
                 </div>
             
@@ -118,9 +134,10 @@
         </div>
     </main>
 
-    <!-- Footer section -->
+    <!-- Footer section
     <footer>
-        <a href="">Copyright</a>
-    </footer>
+        <div>© 2024 YourName. All rights reserved.</div>
+        
+    </footer> -->
 </body>
 </html>
