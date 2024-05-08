@@ -1,18 +1,19 @@
 :root{
 
-    --bgColor:#050306;
-    --bgColorHeader:#05030600;
-    --nametextcolor:#FFF9D8;
-    --textcolor:#FFFFFF;
-    --linkhoverfontsize:60px;
-    --defaultTextSize: 18px;
-    --specialFontColor: #F20C0C;
+    --silver: #bfc0c0ff;
+    --white: #ffffffff; 
+    --black: #020100ff;
+    --coral: #ef8354ff;
+    --eminence: #772d8bff;
+   
 
     --text: #f3ecec;
     --background: #121212;
     --primary: #f77c79;
     --secondary: #95a508;
     --accent: #92f534;
+
+    --nameBigFont : 100px;
 
 }
 
@@ -22,19 +23,25 @@ html{
     height: 100%;
 }
 
+
 body{
     min-height: 100vh;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 5fr 95fr  ;
+    grid-template-rows: 2.5fr 95fr  ;
     margin: 0;
     padding: 0%;
     font-family: 'JetBrains Mono', monospace;
     color: var(--text);
     font-size: var(--defaultTextSize);
-    
+    position: relative;
     background-color: var(--background);
+    text-decoration: none;
+    overflow-y: scroll;
+}
 
+a{
+    text-decoration: none;
 }
 
 
@@ -84,7 +91,7 @@ body{
   
 
 .about_section{
-    height: 90vh;
+    min-height: 93vh;
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-content: center;
@@ -93,7 +100,8 @@ body{
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    
+    overflow-y: auto;
+   
 }
 
 .info_section{
@@ -107,17 +115,40 @@ body{
     font-weight: bold;
 }
 
+
+
 .name{
+    display: inline-block;
+    overflow: hidden;
     font-weight: bold;
     color: var(--primary) ;
+    animation: typing 2s forwards;
 }
 
+/* .style {
+    position: absolute;
+    bottom: auto;
+    left: 0;
+    width: 0%;
+    overflow: hidden;
+} */
+
+
 .name_intro{
-    font-size: 60px;
+    font-size: var(--nameBigFont);
+    position: relative;
 }
 
 .extended_text{
     color: var(--primary);
+    width: 0%;
+    overflow: hidden;
+    animation: typing 5s forwards;
+}
+
+@keyframes typing {
+    from{width: 0%;}
+    to{width: 100%;}
 }
 
 .skill_section{
@@ -126,6 +157,7 @@ body{
     grid-template-rows: 1fr 3fr;
     align-items: center;
     justify-items: center;
+    gap: 5vh;
 }
 
 .skill_title{
@@ -157,12 +189,26 @@ body{
 .skill_list > div:nth-child(12) {
     grid-column: 3/6;
 }
+
+.hidden{
+    opacity: 0;
+    transition: all 2s;
+}
+
+.show{
+    opacity: 1;
+}
+
+.hidden:nth-child(2){
+
+    transition-delay: 200ms;
+}
   
 
 .projects_section{
     
     display: grid;
-    gap: 20px;
+    gap: 10vh;
     padding: 1%;
     justify-items: center;
     align-items: center;
@@ -205,8 +251,8 @@ body{
 } */
 
 .projects_section img{
-    width: 400px;
-    height: 200px;
+    width: 100%;
+    height: auto;
 }
 
 .project_title{
@@ -274,6 +320,79 @@ body{
 
 .github_button p{
     margin: 0px 0px 0px 5px;
+    color: var(--text);
+    text-decoration: none;
 }
 
+
+/* Responsiveness */
+
+@media only screen and (max-width: 900px) {
+   
+    
+    .about_section{
+        grid-template-rows: 1fr 1fr;
+        grid-template-columns: 1fr;
+    }
+
+    .info_section{
+        grid-row: 2/3;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+   
+    .skill_list > div:nth-child(11) {
+        grid-column: auto;
+    }
+      
+    .skill_list > div:nth-child(12) {
+        grid-column: auto;
+    }
+ 
+    .skill_list{
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .skill_list img{
+        height: 34px;
+   }
+
+   .project_tools img{
+
+    height: 25px;
+    width: auto;
+   }
+
+   .about_section img{
+    width: 250px;
+    height: auto;
+   }
+
+   .name_intro{
+    font-size: 60px;
+   }
+    
+}
+
+@media only screen and (max-width: 800px) {
+   
+    
+   .skill_list img{
+        height: 54px;
+   }
+
+
+   .project_entry {
+    grid-template-columns: 1fr;
+    align-items: center;
+    justify-items: center;
+    gap: 5vh;
+    padding: 5%;
+    }
+
+   .project_image{
+    align-self: center;
+   }
+}
 

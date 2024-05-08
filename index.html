@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="css/style.css">
+    <script src="js/scrambleText.js" defer></script>
 </head>
 <body>
     <!-- header section -->
-    <header class="header">
-        <!-- header content -->
+        <header class="header" id = "header">
+            <!-- header content -->
         <div class="menu">
             <a href="#" class="menu_items">About </a>
             <a href="#" class="menu_items">Skills</a>
@@ -18,18 +19,18 @@
     </header>
     
     <!--  main content section -->
-    <main class="main_section">
+    <main class="main_section" id = "main_section">
 
         <!-- About Section Starts -->
 
-        <div class="about_section">
+        <div class="about_section" id = "about_section" >
 
            <div class="info_section">
             
                 <div class="name_intro">
                     <span class="greeting_text">Hi,I'm</span> 
                     <br> 
-                    <span class="name">Darasimi.</span>
+                    <span class="name" id="name">Darasimi</span>
                 </div>
 
                 <div class="extended_text">   
@@ -56,52 +57,52 @@
             <div class="skill_title">My Skills</div>
 
             <div class="skill_list">
-                <div>
-                    <a href=""><img src="assets/images/java_logo.svg" alt=""></a>
+                <div class="hidden">
+                    <a href="#"><img src="assets/images/java_logo.svg" alt=""></a>
                 </div>
                 
-                <div>
-                    <a href=""><img src="assets/images/git_logo.svg" alt=""></a>
+                <div class="hidden">
+                    <a href="#"><img src="assets/images/git_logo.svg" alt=""></a>
                 </div>
                 
-                <div>
-                    <a href=""><img src="assets/images/python_logo.svg" alt=""></a>
+                <div class="hidden">
+                    <a href="#"><img src="assets/images/python_logo.svg" alt=""></a>
                 </div>
 
-                <div>
-                    <a href=""><img src="assets/images/csharp_logo.svg" alt=""></a>
+                <div class="hidden">
+                    <a href="#"><img src="assets/images/csharp_logo.svg" alt=""></a>
                 </div>
 
-                <div>
-                    <a href=""><img src="assets/images/unity_logo.svg" alt=""></a>
+                <div class="hidden">
+                    <a href="#"><img src="assets/images/unity_logo.svg" alt=""></a>
                 </div>
 
-                <div>
-                    <a href=""><img src="assets/images/css_logo.svg" alt=""></a>
+                <div class="hidden">
+                    <a href="#"><img src="assets/images/css_logo.svg" alt=""></a>
                 </div>
 
-                <div>
-                    <a href=""><img src="assets/images/html_logo.svg" alt=""></a>
+                <div class="hidden">
+                    <a href="#"><img src="assets/images/html_logo.svg" alt=""></a>
                 </div>
 
-                <div>
-                    <a href=""><img src="assets/images/c++_logo.svg" alt=""></a>
+                <div class="hidden">
+                    <a href="#"><img src="assets/images/c++_logo.svg" alt=""></a>
                 </div>
 
-                <div>
-                    <a href=""><img src="assets/images/taliwind_logo.svg" alt=""></a>
+                <div class="hidden">
+                    <a href="#"><img src="assets/images/taliwind_logo.svg" alt=""></a>
                 </div>
 
-                <div>
-                    <a href=""><img src="assets/images/react_logo.svg" alt=""></a>
+                <div class="hidden">
+                    <a href="#"><img src="assets/images/react_logo.svg" alt=""></a>
                 </div>
 
-                <div>
-                    <a href=""><img src="assets/images/mysql_logo.svg" alt=""></a>
+                <div class="hidden">
+                    <a href="#"><img src="assets/images/mysql_logo.svg" alt=""></a>
                 </div>
 
-                <div>
-                    <a href=""><img src="assets/images/javascript_logo.svg" alt=""></a>
+                <div class="hidden">
+                    <a href="#"><img src="assets/images/javascript_logo.svg" alt=""></a>
                 </div>
 
             </div>
@@ -125,16 +126,15 @@
                     </div>
 
                     <div class="project_additional_options">
-                        <div class="github_button">
-                            <img src="assets/images/github-mark-white.svg" alt="">
-                            <p>Github</p>
-                        </div>
     
-                        <div class="github_button">
-                            <p>View</p>
+                        
+                         
+                        <a href="https://circuitverse.org/simulator/embed/16-bit-computer-0fb6f5a1-d679-4356-bef7-e8b6bf74a1d1" class="github_button">
                             <img src="assets/images/external_link.svg" alt="">
+                            <p>View</p>
+                        </a>            
                             
-                        </div>
+                       
                     </div>
 
                 </div>
@@ -158,9 +158,11 @@
                         It is capable of basic arithmetic operations, branching and looping operations. 
                     </div>
 
-                    <div class="github_button">
-                        <img src="assets/images/github-mark-white.svg" alt="">
-                        <p>Github</p>
+                    <div>
+                        <a href="https://github.com/DAjayi27/DataStructures" class="github_button">
+                            <img src="assets/images/github-mark-white.svg" alt="">
+                            <p>Github</p>
+                        </a> 
                     </div>
                 </div>
         
@@ -179,14 +181,16 @@
                     </div>
 
                     <div class="project_description">
-                        This is a Visualization program that can vizually represent the connections in Graph. The main goal of the project
-                        is to make  debugging and analyzing graph connections easier and faster, whenver i use them in anyother project.It works well
+                        This is a Visualization program that can visually represent the connections in Graph. The main goal of the project
+                        is to make  debugging and analyzing graph connections easier and faster, whenever i use them in any other project.It works well
                         with both directed and undirected graphs.
                     </div>
 
-                    <div class="github_button">
-                        <img src="assets/images/github-mark-white.svg" alt="">
-                        <p>Github</p>
+                    <div>
+                        <a href="https://github.com/DAjayi27/AlgoVizualizer" class="github_button">
+                            <img src="assets/images/github-mark-white.svg" alt="">
+                            <p>Github</p>
+                        </a> 
                     </div>
                 </div>
         
@@ -213,9 +217,11 @@
                         It currently only works with MySQL 
                     </div>
 
-                    <div class="github_button">
-                        <img src="assets/images/github-mark-white.svg" alt="">
-                        <p>Github</p>
+                    <div>
+                        <a href="https://github.com/DAjayi27/SQL-Parser" class="github_button">
+                            <img src="assets/images/github-mark-white.svg" alt="">
+                            <p>Github</p>
+                        </a> 
                     </div>
 
                 </div>
