@@ -5,7 +5,7 @@
     --black: #020100ff;
     --coral: #ef8354ff;
     --eminence: #772d8bff;
-   
+    --eminenceLight: rgb(138, 54, 161);
 
     --text: #f3ecec;
     --background: #121212;
@@ -108,7 +108,8 @@ a{
     display: flex;
     height: 100%;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-evenly;
+    gap: 5vh;
 }
 
 .greeting_text{
@@ -139,11 +140,39 @@ a{
     position: relative;
 }
 
+.socials{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.socials img{
+    height: 48px;
+}
+
+.socials a{
+    text-decoration: none;
+    color: var(--text);
+    
+}
+
+.resume_download{
+    padding: 20px;
+    background: var(--eminence);
+    border-radius: 20px;
+}
+
+.resume_download:hover{
+    transition: 1s ease-in-out  ;
+    background-color: var(--eminenceLight);
+
+}
+
 .extended_text{
     color: var(--primary);
     width: 0%;
     overflow: hidden;
-    animation: typing 5s forwards;
+    animation: typing 2s forwards;
 }
 
 @keyframes typing {
@@ -341,6 +370,10 @@ a{
 }
 
 @media only screen and (max-width: 500px) {
+
+    .socials img{
+        height: 35px;
+    }
    
     .skill_list > div:nth-child(11) {
         grid-column: auto;
@@ -364,13 +397,17 @@ a{
     width: auto;
    }
 
-   .about_section img{
+   .profile_photo img{
     width: 250px;
     height: auto;
    }
 
    .name_intro{
     font-size: 60px;
+   }
+
+   .resume_download{
+    padding: 10px;
    }
     
 }
