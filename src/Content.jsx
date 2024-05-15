@@ -5,11 +5,11 @@ import './assets/css/style.css'
 
 function Content(){
     return(
-        <>
+        <main className="main_section" id = "main_section">
             <AboutSection></AboutSection>
             <SkillsSection></SkillsSection>
             <PortfolioSection></PortfolioSection>
-        </>
+        </main>
     )
 }
 
