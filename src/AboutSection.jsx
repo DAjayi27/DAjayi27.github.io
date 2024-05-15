@@ -17,16 +17,16 @@ function AboutSection(){
                 </div>
 
                 <div className="socials">
-                    <a href="assets/resume/DarasimiAjayiResume.pdf" className="resume_download" download="">My Resume</a>
-                    <a href="https://github.com/DAjayi27"><img src="assets/images/github-mark-white.svg" alt="GitHub"/></a>
-                    <a href="https://www.linkedin.com/in/darasimiajayi/"><img src="assets/images/linkedin_logo.svg" alt="LinkedIn"/></a>
-                    <a href="mailto:dr716500@dal.ca"><img src="assets/images/outloock_logo .svg" alt="Email"/></a>
+                    <a href="/src/assets/resume/DarasimiAjayiResume.pdf" className="resume_download" download="">My Resume</a>
+                    <a href="https://github.com/DAjayi27"><img src="/src/assets/images/github-mark-white.svg" alt="GitHub"/></a>
+                    <a href="https://www.linkedin.com/in/darasimiajayi/"><img src="/src/assets/images/linkedin_logo.svg" alt="LinkedIn"/></a>
+                    <a href="mailto:dr716500@dal.ca"><img src="/src/assets/images/outloock_logo .svg" alt="Email"/></a>
                 </div>
            </div>
 
            <div className="profile_photo">
         
-                <img src="assets/images/placeholder.png" alt="Profile Photo"/>
+                <img src="/src/assets/images/placeholder.png" alt="Profile Photo"/>
            </div>
 
         </div>
