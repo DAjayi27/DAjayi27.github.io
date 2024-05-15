@@ -1,0 +1,15 @@
+{
+    "Java" : "/src/assets/images/java_logo.svg",
+    "Git" : "/src/assets/images/git_logo.svg",
+    "Python" : "/src/assets/images/python_logo.svg",
+    "C#" : "/src/assets/images/csharp_logo.svg",
+    "Unity" : "/src/assets/images/unity_logo.svg",
+    "CSS" : "/src/assets/images/css_logo.svg",
+    "HTML" : "/src/assets/images/html_logo.svg",
+    "C++" : "/src/assets/images/c++_logo.svg",
+    "Tailwind" : "/src/assets/images/taliwind_logo.svg",
+    "React" : "/src/assets/images/react_logo.svg",
+    "MySQL" : "/src/assets/images/mysql_logo.svg",
+    "JavaScript" : "/src//assets/images/javascript_logo.svg"
+    
+}
