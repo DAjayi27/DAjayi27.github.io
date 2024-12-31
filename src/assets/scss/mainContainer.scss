@@ -1,0 +1,12 @@
+.mainContainer {
+    grid-column-start: 2;
+    display: grid;
+    grid-template-rows: 1fr 0.8fr auto auto;
+    padding: 3%;
+
+    a {
+        text-decoration: none;
+        color: black;
+    }
+}
+

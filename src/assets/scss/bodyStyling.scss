@@ -1,0 +1,71 @@
+@use "sass:math";
+
+$font : 'JetBrains Mono', monospace;
+$fontSize : 18px;
+$fontColor : #1a160d;
+$bgColor:   #fef9ed;
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    padding: 0%;
+    font-family: $font;
+    background-color: $bgColor;
+    text-decoration: none;
+    overflow-y: scroll;
+    color: $fontColor;
+    font-size: $fontSize;
+    overflow-x: hidden;
+   
+    
+
+
+    #app{
+
+       height: 100%; 
+    }
+
+    h1 {
+        font-size: 3.0rem;
+    }
+
+    h3{
+        font-size: 1.75rem;
+        
+    }
+
+    h4 {
+        font-size: 1.15rem;
+     
+    }
+
+
+}
+
+li {
+    list-style-position: outside;
+}
+
+.gridBody{
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    height: 100vh;
+}
+
+.flexBody{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+a {
+
+    text-decoration: none;
+    color: #e6e4d9;
+
+}
