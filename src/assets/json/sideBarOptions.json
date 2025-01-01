@@ -1,9 +1,0 @@
-[
-    {"alt": "Home", "imgSrc":"/images/sidebar/home_icon.svg","text":"Home","href":"#"},
-    {"alt": "About Me", "imgSrc":"/images/sidebar/about_icon.svg","text":"About Me","href":"#aboutMe"},
-    {"alt": "Skills", "imgSrc":"/images/sidebar/skills_icon.svg","text":"Skills","href":"#skills"},
-    {"alt": "Experience", "imgSrc":"/images/sidebar/experience_icon.svg","text":"Experience","href":"#workExperience"},
-    {"alt": "Projects", "imgSrc":"/images/sidebar/projects_icon.svg","text":"Projects","href":"#projects"},
-    {"alt": "Contact", "imgSrc":"/images/sidebar/contact_icon.svg","text":"Contact Me","href":"#"}
-]
-  
