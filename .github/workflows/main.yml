@@ -34,3 +34,4 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./dist # Path to your build directory
         destination_branch: gh-pages # Branch to deploy to
+        cname: daraajayi.me
