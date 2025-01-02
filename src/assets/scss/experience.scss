@@ -1,12 +1,14 @@
+@import "variables" ;
+
 .experiences {
 
     display: grid;
-    row-gap: 20px;
+    row-gap: $gapLarge;
 
     .experience {
 
         display: grid;
-        row-gap: 5px;
+        row-gap: $gapSmall;
         
 
     }

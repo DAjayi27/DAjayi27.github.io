@@ -7,7 +7,7 @@
 }
 .educationHistory .education div {
   display: grid;
-  row-gap: 2px;
+  row-gap: 5px;
 }
 .educationHistory .education .university {
   display: grid;

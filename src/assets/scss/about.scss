@@ -1,3 +1,6 @@
+@import "colours" ;
+@import "variables" ;
+
 #aboutMe {
 
     height: 100vh;
@@ -26,7 +29,7 @@
     .socials {
 
         display: flex;
-        gap: 20px
+        gap: $gapLarge;
 
     }
 
@@ -47,7 +50,7 @@
         }
         
         a {
-            color: #009176;
+            color: $linkHoverColour;
             text-decoration: underline;
         }
     }

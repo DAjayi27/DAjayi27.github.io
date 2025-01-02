@@ -1,9 +1,11 @@
+@import "colours" ;
+@import "variables" ;
 
 .skillSection {
     display: grid;
     grid-template-rows: 0.15fr 0.05fr 1fr;
     align-items: center;
-    row-gap: 20px;
+    row-gap: $gapLarge;
 
     > h1{
         margin-top: 0;
@@ -13,7 +15,7 @@
 .active-option{
     
     text-decoration: underline;
-    color: #009176;
+    color: $linkHoverColour;
 }
 // .active-option{
 //     box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
@@ -90,7 +92,7 @@
         display: flex;
         width: 100%;
         justify-content: start;
-        column-gap: 30px;
+        column-gap: $gapXLarge;
    }
 
    img {
@@ -106,7 +108,7 @@
 .external{
 
     display: flex;
-    gap: 20px;
+    gap: $gapLarge;
     align-items: center;
 
 }

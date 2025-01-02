@@ -1,10 +1,9 @@
 @use "sass:math";
+@import "colours" ;
+@import "variables" ;
 
-$font : '';
-$fontSize : 18px;
-$fontSizeMobile : 14px;
-$fontColor : #1a160d;
-$bgColor:   #fef9ed;
+
+
 html {
     scroll-behavior: smooth;
     height: 100%;
@@ -63,13 +62,13 @@ li {
 
 
 a:hover {
-    color: #009176;
+    color: $linkHoverColour ;
     text-decoration: underline;
 }
 
 a {
     text-decoration: none;
-    color: black;
+    color: $fontColor;
 }
 
 .gridBody {

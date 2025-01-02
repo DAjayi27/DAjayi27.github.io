@@ -1,14 +1,16 @@
+@import "variables" ;
+
 .educationHistory {
 
     display: grid;
 
     .education {
         display: grid;
-        row-gap: 10px;
+        row-gap: $gapMedium;
 
         div {
             display: grid;
-            row-gap: 2px;
+            row-gap: $gapSmall
         }
 
         .university {

@@ -19,7 +19,7 @@
 }
 .sidebar a {
   text-decoration: none;
-  color: #e6e4d9;
+  color: #fef9ed;
 }
 .sidebar a:hover {
   color: #fcfcfd;
@@ -49,5 +49,12 @@
     align-items: center;
     width: 100%;
     justify-content: space-between;
+  }
+  .sidebar .hamburger .icon {
+    color: #fef9ed;
+  }
+  .sidebar .hamburger p {
+    color: #fef9ed;
+    font-size: 1.5rem;
   }
 }

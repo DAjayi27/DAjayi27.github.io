@@ -1,12 +1,14 @@
+@import "variables" ;
+
 .projects {
 
     display: grid;
-    row-gap: 20px;
+    row-gap: $gapLarge;
 
     .project {
 
         display: grid;
-        row-gap: 5px;
+        row-gap: $gapSmall;
         
 
     }

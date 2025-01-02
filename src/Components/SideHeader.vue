@@ -44,7 +44,7 @@
     <div class="sidebar" id="sidebar">
         <div class="hamburger">
             <p>Darasimi Ajayi </p>
-            <font-awesome-icon icon="fa-solid fa-bars"  @click="test" size="2xl"/>
+            <font-awesome-icon icon="fa-solid fa-bars"  @click="test" size="2xl" class="icon"/>
         </div>
         <div v-for=" (option,index) in sideBarOptions" :key="index" >
             <!-- <a :href="option.href"><img :src="option.imgSrc" :alt="option.alt"></a> -->

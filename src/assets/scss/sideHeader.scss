@@ -1,7 +1,7 @@
 
-$imageSize: 50px;
 
-
+@import "colours" ;
+@import "variables" ;
 
 .sidebar {
 
@@ -43,12 +43,12 @@ $imageSize: 50px;
     a {
 
         text-decoration: none;
-        color: #e6e4d9;
+        color: $bgColor;
     
     }
 
     a:hover {
-        color: #fcfcfd;
+        color: $sidebarHoverColour;
     }
 
     .hamburger{
@@ -85,6 +85,16 @@ $imageSize: 50px;
             align-items: center;
             width: 100%;
             justify-content: space-between;
+
+            .icon {
+                color: $bgColor;
+            }
+
+            p {
+
+                color: $bgColor ;
+                font-size: 1.5rem;
+            }
         }
     }
 
