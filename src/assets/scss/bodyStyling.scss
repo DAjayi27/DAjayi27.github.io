@@ -1,6 +1,6 @@
 @use "sass:math";
 
-$font : 'JetBrains Mono', monospace;
+$font : '';
 $fontSize : 18px;
 $fontColor : #1a160d;
 $bgColor:   #fef9ed;
@@ -31,7 +31,7 @@ body {
     }
 
     h1 {
-        font-size: 3.0rem;
+        font-size: 4.0rem;
     }
 
     h3{

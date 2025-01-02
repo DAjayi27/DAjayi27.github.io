@@ -35,16 +35,11 @@
 
     <div class="external">
         <a :href="obj.link" v-for="(obj,type) in otherLinks"  :key="type" >
-            <font-awesome-icon icon="fa-solid fa-arrow-up-right-from-square" size="xl" 
-                 
-                 
-            />
+            <font-awesome-icon icon="fa-solid fa-arrow-up-right-from-square" size="xl" class="fa-icon" />
         </a>
         
         <a :href="obj.link" v-for="(obj,type) in githubLink" :key="type">
-            <font-awesome-icon :icon="['fab', 'github']" size="xl"
-                :key="type"  
-            />
+            <font-awesome-icon :icon="['fab', 'github']" size="2xl" class="fa-icon" />
         </a>
        
         

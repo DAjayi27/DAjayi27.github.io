@@ -8,27 +8,45 @@
 
     <div id="aboutMe">
 
-        <h1>About Me</h1>
+        <div>
 
-        <span id="hero-image">
-            <img src="https://picsum.photos/id/37/500/300" alt="Hero Image">
-        </span>
+            <div id="about-me-describe" class="about">
+    
+                <div class="personal-info">
+                    <h1>Hi I'm Daniel</h1>
+                    <p>Second Year CS Student at Dalhousie University</p>
+                    <p>Halifax,NS - <a href="">daraajayi27@gmail.com</a></p>
+                    
+    
+                </div>
+    
+    
+                <p>  
+                    I have a passion for technology and programming related. 
+                    Systems programming holds a special interest for me, as I enjoy diving deep into its complexities.
+                    Outside of academics, I spend my free time playing games, listening to music. I'm also a life long Real Madrid fan😊.
+                </p>
+    
+                <a href="">Download Resume</a>
+    
+                <div class="socials">
+                    <a href="">
+                        <font-awesome-icon :icon="['fab', 'github']" size="2xl" class="fa-icon" />
+                    </a>
+    
+                    <a href="">
+                        <font-awesome-icon icon="fa-brands fa-linkedin" size ="2xl" />
+                    </a>
+                    
+                </div>
+    
+            </div>
 
-        <div id="about-me-describe">
-
-            <h1>Hi I'm Daniel</h1>
-
-            <p> Hello! My name is Darasimi Ajayi, and I’m a second-year Computer Science student at Dalhousie University. 
-                I have a passion for technology and love exploring different areas of computing. 
-                Systems programming holds a special interest for me, as I enjoy diving deep into its complexities.
-                Outside of academics, I spend my free time playing games, listening to music, and am a life long Real Madrid fan. 
-                Always exited for a new challenge not matter how difficult, and always ready to learn 😊.
-            </p>
         </div>
         
     </div>
 
 </template>
 
-<style>
+<style src="../../assets/css/about.css">
 </style>

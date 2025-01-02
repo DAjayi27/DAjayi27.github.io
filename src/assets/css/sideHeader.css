@@ -2,16 +2,12 @@
   background-color: #8b867a;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   position: fixed;
   width: 20%;
   height: 100%;
   overflow-y: auto;
-}
-.sidebar a {
-  display: inline-block;
-  width: 50px;
 }
 .sidebar img {
   width: 50px;

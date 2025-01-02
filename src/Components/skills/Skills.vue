@@ -35,8 +35,6 @@
         
             swapCurrentDisplay(e,text){
 
-                debugger;
-
                 if ( e != null && e.target != null) {
 
                     //this.resetTimer();

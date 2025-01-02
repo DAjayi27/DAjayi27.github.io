@@ -6,7 +6,7 @@ body {
   min-height: 100vh;
   margin: 0;
   padding: 0%;
-  font-family: "JetBrains Mono", monospace;
+  font-family: "";
   background-color: #fef9ed;
   text-decoration: none;
   overflow-y: scroll;
@@ -18,7 +18,7 @@ body #app {
   height: 100%;
 }
 body h1 {
-  font-size: 3rem;
+  font-size: 4rem;
 }
 body h3 {
   font-size: 1.75rem;
