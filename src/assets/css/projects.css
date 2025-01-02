@@ -4,17 +4,5 @@
 }
 .projects .project {
   display: grid;
-  row-gap: 15px;
-}
-.projects .project img {
-  width: 50px;
-  height: 50px;
-}
-.projects .project h3 {
-  font-size: 1.75rem;
-  margin: 0;
-}
-.projects .project h4 {
-  font-size: 1.15rem;
-  margin: 0;
+  row-gap: 5px;
 }

@@ -15,7 +15,7 @@
                 <div class="personal-info">
                     <h1>Hi I'm Daniel</h1>
                     <p>Second Year CS Student at Dalhousie University</p>
-                    <p>Halifax,NS - <a href="">daraajayi27@gmail.com</a></p>
+                    <p>Halifax,NS - <a href="mailto:daraajayi27@gmail.com">daraajayi27@gmail.com</a></p>
                     
     
                 </div>
@@ -27,14 +27,14 @@
                     Outside of academics, I spend my free time playing games, listening to music. I'm also a life long Real Madrid fan😊.
                 </p>
     
-                <a href="">Download Resume</a>
+                <a href="/src/assets/resume/Darasimi-Ajayi-Resume.pdf" download="">Download Resume</a>
     
                 <div class="socials">
-                    <a href="">
+                    <a href="https://github.com/DAjayi27">
                         <font-awesome-icon :icon="['fab', 'github']" size="2xl" class="fa-icon" />
                     </a>
     
-                    <a href="">
+                    <a href="https://www.linkedin.com/in/darasimiajayi/">
                         <font-awesome-icon icon="fa-brands fa-linkedin" size ="2xl" />
                     </a>
                     
@@ -43,7 +43,7 @@
             </div>
 
         </div>
-        
+
     </div>
 
 </template>

@@ -21,16 +21,35 @@
         font-size: 6rem;
     }
 
-   a:hover {
-        text-decoration: underline;
-        color: blue;
-   }
+  
 
     .socials {
 
         display: flex;
         gap: 20px
 
+    }
+
+}
+
+
+@media only screen and (max-width: 768px){
+    
+    #aboutMe {
+
+        height: 94vh;
+        display: grid;
+        align-items: center;
+    
+        > div {
+            height: 80%
+            
+        }
+        
+        a {
+            color: #009176;
+            text-decoration: underline;
+        }
     }
 
 }

@@ -3,11 +3,11 @@
     import ExternalLinks from './ExternalLinks.vue';
 
     export default{
-        components: { SkillsUsed , ExternalLinks},
+        components: { ExternalLinks},
         props: {
             projectTitle: String,
             projectDescription: String,
-            skillsUsed: Array,
+            skillsUsed: String,
             externalLinks: Array,
             additionalInfo: Array,
         },

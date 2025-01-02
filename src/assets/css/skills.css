@@ -2,13 +2,15 @@
   display: grid;
   grid-template-rows: 0.15fr 0.05fr 1fr;
   align-items: center;
+  row-gap: 20px;
 }
 .skillSection > h1 {
   margin-top: 0;
 }
 
 .active-option {
-  text-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px 12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px 3px 5px;
+  text-decoration: underline;
+  color: #009176;
 }
 
 .skillHeader {
@@ -70,8 +72,4 @@
   display: flex;
   gap: 20px;
   align-items: center;
-}
-
-.fa-icon:hover {
-  color: red;
 }

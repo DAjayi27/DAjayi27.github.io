@@ -1,5 +1,4 @@
 <script>
-import Index from '@/Pages/Index.vue';
 
     export default{
         props: {

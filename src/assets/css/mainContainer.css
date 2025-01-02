@@ -1,10 +1,13 @@
 .mainContainer {
-  grid-column-start: 2;
   display: grid;
-  grid-template-rows: 1fr 0.8fr auto auto;
+  grid-template-rows: 1fr auto auto 0.8fr;
   padding: 3%;
+  row-gap: 25px;
+  grid-row-start: 2;
 }
-.mainContainer a {
-  text-decoration: none;
-  color: black;
+
+@media only screen and (min-width: 768px) {
+  .mainContainer {
+    grid-column-start: 2;
+  }
 }

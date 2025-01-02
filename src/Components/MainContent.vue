@@ -3,6 +3,7 @@ import AboutMe from "./About Me/AboutMe.vue";
 import Projects from "./Project/Projects.vue";
 import Skills from "./skills/Skills.vue";
 import WorkExperience from "./Excperience/WorkExperience.vue";
+import EducationHistory from "./Education/EducationHistory.vue";
 
 
 </script>
@@ -11,8 +12,9 @@ import WorkExperience from "./Excperience/WorkExperience.vue";
 
     <div class="mainContainer">
         <AboutMe></AboutMe>
-        <Skills></Skills>
         <WorkExperience></WorkExperience>
+        <EducationHistory></EducationHistory>
+        <Skills></Skills>
         <Projects></Projects>
     </div>
     

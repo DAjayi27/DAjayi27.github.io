@@ -3,6 +3,8 @@
     import projects from "../../assets/json/projects.json";
     import Project from "./Project.vue";
 
+   
+
     export default {
         components: {
             Project

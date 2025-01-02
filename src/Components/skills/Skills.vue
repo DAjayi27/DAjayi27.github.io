@@ -80,18 +80,18 @@
                 this.headerClicked = this.headerClicked.toLowerCase().replace(/\s/g, "");
             },
 
-            onBeforeEnter(el) {
+            // onBeforeEnter(el) {
                
 
-            },
+            // },
 
-            onEnter(el, done) {
-                gsap.fromTo(
-                    el,
-                    { x: 300 , opacity:0},
-                    { x: 0, duration: 2 ,opacity:1}
-                );
-            },
+            // onEnter(el, done) {
+            //     gsap.fromTo(
+            //         el,
+            //         { x: 300 , opacity:0},
+            //         { x: 0, duration: 2 ,opacity:1}
+            //     );
+            // },
 
             changeSkillDisplayed(){
                 let index = currentIndex % skillsDisplayOptions.length;

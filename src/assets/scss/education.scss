@@ -1,0 +1,29 @@
+.educationHistory {
+
+    display: grid;
+
+    .education {
+        display: grid;
+        row-gap: 10px;
+
+        div {
+            display: grid;
+            row-gap: 2px;
+        }
+
+        .university {
+
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+
+            span {
+                justify-self: right;
+            }
+        }
+        
+    }
+
+ 
+
+}

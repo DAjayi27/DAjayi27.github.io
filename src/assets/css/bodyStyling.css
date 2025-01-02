@@ -1,5 +1,7 @@
 html {
   scroll-behavior: smooth;
+  height: 100%;
+  font-size: 14px;
 }
 
 body {
@@ -9,9 +11,7 @@ body {
   font-family: "";
   background-color: #fef9ed;
   text-decoration: none;
-  overflow-y: scroll;
   color: #1a160d;
-  font-size: 18px;
   overflow-x: hidden;
 }
 body #app {
@@ -19,22 +19,20 @@ body #app {
 }
 body h1 {
   font-size: 4rem;
+  margin: 0;
 }
 body h3 {
   font-size: 1.75rem;
+  margin: 0;
 }
 body h4 {
-  font-size: 1.15rem;
+  font-size: 1.35rem;
+  margin: 0;
+  font-weight: normal;
 }
 
 li {
   list-style-position: outside;
-}
-
-.gridBody {
-  display: grid;
-  grid-template-columns: 1fr 4fr;
-  height: 100vh;
 }
 
 .flexBody {
@@ -43,7 +41,27 @@ li {
   justify-content: space-evenly;
 }
 
+a:hover {
+  color: #009176;
+  text-decoration: underline;
+}
+
 a {
   text-decoration: none;
-  color: #e6e4d9;
+  color: black;
+}
+
+.gridBody {
+  display: grid;
+  grid-template-rows: 6vh auto;
+}
+
+@media only screen and (min-width: 768px) {
+  .gridBody {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+  }
+  html {
+    font-size: 18px;
+  }
 }

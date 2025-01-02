@@ -17,3 +17,37 @@
   display: grid;
   justify-items: center;
 }
+.sidebar a {
+  text-decoration: none;
+  color: #e6e4d9;
+}
+.sidebar a:hover {
+  color: #fcfcfd;
+}
+.sidebar .hamburger {
+  display: none;
+}
+
+.activateHamburger {
+  height: max-content;
+  height: -moz-fit-content;
+  height: -moz-max-content;
+}
+
+@media only screen and (max-width: 768px) {
+  .sidebar {
+    position: relative;
+    width: unset;
+    align-items: start;
+    justify-content: unset;
+    padding: 3%;
+    z-index: 10;
+    transition: 1s;
+  }
+  .sidebar .hamburger {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+  }
+}

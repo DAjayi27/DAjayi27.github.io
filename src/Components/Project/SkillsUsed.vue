@@ -3,7 +3,7 @@
 export default {
   props: {
     skills: {
-      type: Array,
+      type: String,
       required: true, // Ensure Skills prop is always provided
     },
   },

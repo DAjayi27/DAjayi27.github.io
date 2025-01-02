@@ -40,4 +40,53 @@ $imageSize: 50px;
         justify-items: center;
     }
 
+    a {
+
+        text-decoration: none;
+        color: #e6e4d9;
+    
+    }
+
+    a:hover {
+        color: #fcfcfd;
+    }
+
+    .hamburger{
+
+        display: none;
+        
+    }
+    
+
+}
+
+.activateHamburger {
+
+    height: max-content;
+    height: -moz-fit-content;
+    height: -moz-max-content;
+    
+}
+
+
+@media only screen and (max-width: 768px){
+    .sidebar {
+        position: relative;
+        width: unset;
+        align-items: start;
+        justify-content: unset;
+        padding: 3%;
+        z-index: 10;
+        transition: 1s;
+        
+
+        .hamburger{
+            display: flex;
+            align-items: center;
+            width: 100%;
+            justify-content: space-between;
+        }
+    }
+
+    
 }

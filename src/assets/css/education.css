@@ -1,0 +1,19 @@
+.educationHistory {
+  display: grid;
+}
+.educationHistory .education {
+  display: grid;
+  row-gap: 10px;
+}
+.educationHistory .education div {
+  display: grid;
+  row-gap: 2px;
+}
+.educationHistory .education .university {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+}
+.educationHistory .education .university span {
+  justify-self: right;
+}

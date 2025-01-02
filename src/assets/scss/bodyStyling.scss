@@ -2,11 +2,13 @@
 
 $font : '';
 $fontSize : 18px;
+$fontSizeMobile : 14px;
 $fontColor : #1a160d;
 $bgColor:   #fef9ed;
-
 html {
     scroll-behavior: smooth;
+    height: 100%;
+    font-size: $fontSizeMobile;
 }
 
 
@@ -17,9 +19,7 @@ body {
     font-family: $font;
     background-color: $bgColor;
     text-decoration: none;
-    overflow-y: scroll;
     color: $fontColor;
-    font-size: $fontSize;
     overflow-x: hidden;
    
     
@@ -32,15 +32,18 @@ body {
 
     h1 {
         font-size: 4.0rem;
+        margin: 0;
     }
 
     h3{
         font-size: 1.75rem;
-        
+        margin: 0;
     }
 
     h4 {
-        font-size: 1.15rem;
+        font-size: 1.35rem;
+        margin: 0;
+        font-weight: normal;
      
     }
 
@@ -51,11 +54,6 @@ li {
     list-style-position: outside;
 }
 
-.gridBody{
-    display: grid;
-    grid-template-columns: 1fr 4fr;
-    height: 100vh;
-}
 
 .flexBody{
     display: flex;
@@ -63,9 +61,33 @@ li {
     justify-content: space-evenly;
 }
 
+
+a:hover {
+    color: #009176;
+    text-decoration: underline;
+}
+
 a {
-
     text-decoration: none;
-    color: #e6e4d9;
+    color: black;
+}
 
+.gridBody {
+    display: grid;
+    grid-template-rows: 6vh auto;
+    // grid-template-columns: 1fr;
+}
+
+@media only screen and (min-width: 768px){
+    
+    .gridBody{
+        display: grid;
+        grid-template-columns: 1fr 4fr;
+    }
+
+   html {
+        font-size: $fontSize;
+   }
+
+    
 }

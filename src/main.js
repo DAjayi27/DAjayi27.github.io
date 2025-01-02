@@ -15,9 +15,11 @@ import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons'
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faLink } from '@fortawesome/free-solid-svg-icons';
 import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
+
 
 /* add icons to the library */
-library.add(faUserSecret,faArrowUpRightFromSquare,faGithub,faLink,faLinkedin)
+library.add(faUserSecret,faArrowUpRightFromSquare,faGithub,faLink,faLinkedin,faBars)
 
 
 
