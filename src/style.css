@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Cascadia+Code:ital,wght@0,200..700;1,200..700&display=swap');
 @import "tailwindcss";
 
 @custom-variant dark (&:where(.dark, .dark *));
@@ -51,12 +52,12 @@
   --color-surface-container-high: #37242f;
   --color-tertiary-container: #7ff670;
 
-  --font-label-md: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
-  --font-label-sm: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
-  --font-body-lg: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
-  --font-body-md: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
-  --font-headline-md: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
-  --font-headline-lg: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --font-label-md: "Cascadia Code","JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --font-label-sm: "Cascadia Code","JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --font-body-lg: "Cascadia Code","JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --font-body-md: "Cascadia Code","JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --font-headline-md: "Cascadia Code","JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --font-headline-lg: "Cascadia Code","JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
 
   --text-label-md: 12px;
   --text-label-md--line-height: 16px;
@@ -64,10 +65,10 @@
   --text-label-sm: 10px;
   --text-label-sm--line-height: 14px;
   --text-label-sm--font-weight: 500;
-  --text-body-lg: 18px;
+  --text-body-lg: 20px;
   --text-body-lg--line-height: 28px;
   --text-body-lg--font-weight: 400;
-  --text-body-md: 16px;
+  --text-body-md: 20px;
   --text-body-md--line-height: 24px;
   --text-body-md--font-weight: 400;
   --text-headline-md: 24px;
