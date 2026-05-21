@@ -1,53 +1,111 @@
 <script setup lang="ts">
-import { defineEmits, onMounted, ref, useTemplateRef } from 'vue'
+import {computed, onMounted, onUnmounted, ref, useTemplateRef} from 'vue'
 
 const emits = defineEmits<{
-  done:[]
-}>();
+  done: []
+}>()
 
+const container = useTemplateRef("container")
 const visible = ref(true)
 const isAnimatingOut = ref(false)
-const container =  useTemplateRef("container");
+const currentGlyph = ref(0)
+const tickerInterval = ref<number | null>(null)
 
-const asciiArt = `
-DDDD   AAA   RRRR   AAA      0000   SSSS
-D   D A   A  R   R  A   A   0    0  S
-D   D AAAAA  RRRR   AAAAA   0    0   SSS
-D   D A   A  R  R   A   A   0    0      S
-DDDD  A   A  R   R  A   A    0000   SSSS`
+type Glyph = string[]
 
-const lines = asciiArt.split('\n')
-const maxCols = Math.max(...lines.map(line => line.length))
+const glyphs: Glyph[] = [
+  [
+    'DDDD ',
+    'D   D',
+    'D   D',
+    'D   D',
+    'DDDD ',
+  ],
+  [
+    ' AAA ',
+    'A   A',
+    'AAAAA',
+    'A   A',
+    'A   A',
+  ],
+  [
+    'RRRR ',
+    'R   R',
+    'RRRR ',
+    'R  R ',
+    'R   R',
+  ],
+  [
+    ' AAA ',
+    'A   A',
+    'AAAAA',
+    'A   A',
+    'A   A',
+  ],
+  [
+    '     ',
+    '     ',
+    '     ',
+    '     ',
+    '     ',
+  ],
+  [
+    ' OOO ',
+    'O   O',
+    'O   O',
+    'O   O',
+    ' OOO ',
+  ],
+  [
+    ' SSSS',
+    'S    ',
+    ' SSS ',
+    '    S',
+    'SSSS ',
+  ],
+]
 
-const displayedArt = ref('')
-let currentColumn = 0
-let tickerInterval: number | null = null
+const rows = glyphs[0]!.length
+
+const displayedArt = computed(() =>
+  Array.from({ length: rows }, (_, row) =>
+    glyphs
+      .slice(0, currentGlyph.value)
+      .map(glyph => glyph[row])
+      .join('  '),
+  ).join('\n'),
+)
 
 const startTypewriter = () => {
-  const msPerColumn = 40
+  const msPerGlyph = 250
 
-  tickerInterval = window.setInterval(() => {
-
-    if (currentColumn <= maxCols) {
-      displayedArt.value = lines
-          .map(line => line.slice(0, currentColumn))
-          .join('\n')
-
-      currentColumn++
-    } else {
-      if (tickerInterval) clearInterval(tickerInterval)
-      container.value?.classList.add('animation-out')
+  tickerInterval.value = window.setInterval(() => {
+    if (currentGlyph.value < glyphs.length) {
+      currentGlyph.value++
+      return
     }
-  }, msPerColumn)
+
+    if (tickerInterval.value) {
+      clearInterval(tickerInterval.value)
+      tickerInterval.value = null
+    }
+
+    isAnimatingOut.value = true
+    container.value?.classList.add('animation-out')
+  }, msPerGlyph)
 }
 
-const handleAnimationEnd = (event: AnimationEvent) => {
+const handleAnimationEnd = () => {
   visible.value = false
   emits('done')
 }
 
 onMounted(() => {
   startTypewriter()
+})
+
+onUnmounted(() => {
+  if (tickerInterval.value) clearInterval(tickerInterval.value)
 })
 </script>
 
@@ -59,8 +117,7 @@ onMounted(() => {
     @animationend="handleAnimationEnd"
   >
     <div class="ascii-box text-(--color-surface-tint)">
-      <!-- Binding to the processed displayedArt ref instead of raw template string -->
-      <pre class="ascii-pre whitespace-pre">{{ displayedArt }}</pre>
+      <pre class="ascii-pre whitespace-pre text-xl">{{ displayedArt }}</pre>
     </div>
   </div>
 </template>
@@ -78,12 +135,11 @@ onMounted(() => {
   max-width: 90%;
   max-height: 60%;
   overflow: hidden;
-  box-shadow: 0 0 30px rgba(0,230,57,0.16);
 }
+
 .ascii-pre {
-  font-family: ui-monospace, SFMono-Regular, monospace;
+  font-family: var(--font-label-md);
   line-height: 1;
-  font-size: 12px;
 }
 
 @keyframes ascii-fade {
