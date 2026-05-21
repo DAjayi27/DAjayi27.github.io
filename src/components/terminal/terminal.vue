@@ -3,6 +3,7 @@
   import TerminalOutput from '@/components/terminal/terminal-output.vue'
   import {nextTick, onMounted, ref} from 'vue'
   import Card from '@/components/terminal/Card.vue'
+  import { useRouter } from 'vue-router'
   import { Command, isValidCommand } from '@/components/terminal/cli-controller.ts'
 
   const terminalOutputList = ref<string[]>([])
@@ -56,6 +57,17 @@
     console.log(`Running command: ${command}`)
   }
 
+  const router = useRouter()
+
+  function slugify(title: string) {
+    return title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')
+  }
+
+  function openProject(title: string) {
+    const id = slugify(title)
+    router.push({ name: 'project', params: { id } })
+  }
+
   onMounted(() => {
 
   })
@@ -94,10 +106,23 @@
     <TerminalInput @submit="handleCommand" />
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-8" v-if="showPanel">
-      <Card title="PROJECTS.EXE" size="&lt;DIR&gt;" date="10-12-94" tag="DIR" icon="folder" access="[ ACCESS: READ/WRITE ]" />
-      <Card title="ABOUT.TXT" size="4.2 KB" date="05-22-94" tag="FILE" icon="description" access="[ ACCESS: READ ONLY ]" />
-      <Card title="CONTACT.SYS" size="128 B" date="08-15-94" tag="SYS" icon="settings_input_component" access="[ ACCESS: SYSTEM ]" />
-      <Card title="RESUME.DOC" size="25.0 KB" date="11-01-94" tag="FILE" icon="article" access="[ ACCESS: READ/WRITE ]" />
+
+      <router-link to="/project">
+        <Card title="PROJECTS.EXE" size="&lt;DIR&gt;" date="10-12-94" tag="DIR" icon="folder" access="[ ACCESS: READ/WRITE ]" />
+      </router-link>
+
+      <router-link to="/about">
+        <Card title="ABOUT.TXT" size="4.2 KB" date="05-22-94" tag="FILE" icon="description" access="[ ACCESS: READ ONLY ]"/>
+      </router-link>
+
+      <router-link to="/contact">
+        <Card title="CONTACT.SYS" size="128 B" date="08-15-94" tag="SYS" icon="settings_input_component" access="[ ACCESS: SYSTEM ]"/>
+      </router-link>
+
+
+      <Card title="RESUME.DOC" size="25.0 KB" date="11-01-94" tag="FILE" icon="article" access="[ ACCESS: READ/WRITE ]"/>
+
+
     </div>
 
   </main>
