@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import {defineProps, defineEmits, onMounted, ref, nextTick, useTemplateRef} from 'vue'
+import { defineEmits, onMounted, ref, useTemplateRef } from 'vue'
 
 const emits = defineEmits<{
   done:[]
 }>();
 
 const visible = ref(true)
+const isAnimatingOut = ref(false)
 const container =  useTemplateRef("container");
 
 const asciiArt = `
@@ -35,9 +36,14 @@ const startTypewriter = () => {
       currentColumn++
     } else {
       if (tickerInterval) clearInterval(tickerInterval)
-      container.value?.classList.add('animation-out');
+      container.value?.classList.add('animation-out')
     }
   }, msPerColumn)
+}
+
+const handleAnimationEnd = (event: AnimationEvent) => {
+  visible.value = false
+  emits('done')
 }
 
 onMounted(() => {
@@ -46,8 +52,13 @@ onMounted(() => {
 </script>
 
 <template>
-  <div v-if="visible" ref="container" class="ascii-overlay fixed inset-0 z-50 flex items-center justify-center bg-black/60">
-    <div class="ascii-box text-[var(--color-surface-tint)]">
+  <div
+    v-if="visible"
+    ref="container"
+    :class="'ascii-overlay fixed inset-0 z-50 flex items-center justify-center bg-black/60'"
+    @animationend="handleAnimationEnd"
+  >
+    <div class="ascii-box text-(--color-surface-tint)">
       <!-- Binding to the processed displayedArt ref instead of raw template string -->
       <pre class="ascii-pre whitespace-pre">{{ displayedArt }}</pre>
     </div>
