@@ -6,7 +6,7 @@
 
 <template>
 
-  <main>
+  <main class="grid grid-rows-[1.875rem_1fr_2.5rem] h-screen">
 
     <top-nav-bar></top-nav-bar>
     <terminal></terminal>

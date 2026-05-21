@@ -1,12 +1,15 @@
-export const validCommands = [
-  'HELP',
-  'CLEAR',
-  'ABOUT',
-  'PROJECTS',
-  'CONTACT',
-] as const
+export enum Command {
+  HELP = 'HELP',
+  CLEAR = 'CLEAR',
+  ABOUT = 'ABOUT',
+  PROJECTS = 'PROJECTS',
+  CONTACT = 'CONTACT',
+  HOME = 'HOME',
+}
 
-export type ValidCommand = (typeof validCommands)[number]
+export type ValidCommand = Command
+
+export const validCommands: ValidCommand[] = Object.values(Command)
 
 export function isValidCommand(command: string): command is ValidCommand {
   return validCommands.includes(command.toUpperCase() as ValidCommand)
