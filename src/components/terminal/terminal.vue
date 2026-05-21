@@ -1,7 +1,7 @@
 <script setup lang="ts">
   import TerminalInput from '@/components/terminal/terminal-input.vue'
   import TerminalOutput from '@/components/terminal/terminal-output.vue'
-  import { onMounted, ref } from 'vue'
+  import {nextTick, onMounted, ref} from 'vue'
   import Card from '@/components/terminal/Card.vue'
   import { Command, isValidCommand } from '@/components/terminal/cli-controller.ts'
 
@@ -9,11 +9,12 @@
   const showPanel = ref(false);
 
 
-  function log(command:string,output: string) {
+  async function log(command:string,output: string) {
     // use actual characters instead of HTML entities — the content is rendered as text
     const dirText = `C:\\> ${command}\n${output}`
 
     terminalOutputList.value.push(dirText)
+    await nextTick();
   }
 
   function handleCommand(command: string) {
@@ -64,7 +65,7 @@
 
 <template>
 
-  <main class="w-full p-margin-desktop overflow-y-auto relative flex flex-col gap-4">
+  <main class="w-full p-margin-desktop overflow-y-scroll relative flex flex-col gap-4">
 
     <!-- Boot Sequence Simulation -->
     <div class="space-y-1">
