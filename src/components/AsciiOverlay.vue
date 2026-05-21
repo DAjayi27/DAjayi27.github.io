@@ -1,23 +1,56 @@
 <script setup lang="ts">
-import { defineProps, defineEmits, onMounted, ref } from 'vue'
+import { defineProps, defineEmits, onMounted, ref, nextTick } from 'vue'
 
-const props = defineProps<{ ascii?: string }>()
 const emits = defineEmits(['done'])
 const visible = ref(true)
 
+const asciiArt = `
+DDDD   AAA   RRRR   AAA      0000   SSSS
+D   D A   A  R   R  A   A   0    0  S
+D   D AAAAA  RRRR   AAAAA   0    0   SSS
+D   D A   A  R  R   A   A   0    0      S
+DDDD  A   A  R   R  A   A    0000   SSSS`
+
+const lines = asciiArt.split('\n')
+const maxCols = Math.max(...lines.map(line => line.length))
+
+const displayedArt = ref('')
+let currentColumn = 0
+let tickerInterval: number | null = null
+
+const startTypewriter = () => {
+  const msPerColumn = 12
+
+  tickerInterval = window.setInterval(() => {
+    if (currentColumn <= maxCols) {
+      // Reconstruct the ASCII block up to the current active column
+      displayedArt.value = lines
+          .map(line => line.slice(0, currentColumn))
+          .join('\n')
+
+      currentColumn++
+    } else {
+      if (tickerInterval) clearInterval(tickerInterval)
+    }
+  }, msPerColumn)
+}
+
 onMounted(() => {
-  // Auto-hide after animation duration (match CSS animation-duration)
+  startTypewriter()
+
   setTimeout(() => {
+    if (tickerInterval) clearInterval(tickerInterval)
     visible.value = false
     emits('done')
-  }, 700)
+  }, 700) // Keeps your exact 700ms ascii-fade lifecycle intact
 })
 </script>
 
 <template>
   <div v-if="visible" class="ascii-overlay fixed inset-0 z-50 flex items-center justify-center bg-black/60">
     <div class="ascii-box p-4 border border-[var(--color-surface-tint)] text-[var(--color-surface-tint)]">
-      <pre class="ascii-pre whitespace-pre-wrap">{{ props.ascii }}</pre>
+      <!-- Binding to the processed displayedArt ref instead of raw template string -->
+      <pre class="ascii-pre whitespace-pre">{{ displayedArt }}</pre>
     </div>
   </div>
 </template>
@@ -30,7 +63,7 @@ onMounted(() => {
   max-width: 90%;
   max-height: 60%;
   overflow: hidden;
-  animation: ascii-fade 700ms ease-in-out;
+  animation: ascii-fade 700ms ease-in-out forwards;
   box-shadow: 0 0 30px rgba(0,230,57,0.16);
 }
 .ascii-pre {
