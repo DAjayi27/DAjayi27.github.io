@@ -3,8 +3,7 @@ import { ref, onMounted, onUnmounted } from 'vue'
 import BioSection from '@/components/about/BioSection.vue'
 import EducationSection from '@/components/about/EducationSection.vue'
 import ExperienceSection from '@/components/about/ExperienceSection.vue'
-import VolunteerSection from '@/components/about/VolunteerSection.vue'
-import { bioData, educationItems, experienceItems, volunteerItems, volunteerMetric } from '@/data/about'
+import { bioData, educationItems, experienceItems } from '@/data/about'
 
 // Flicker + reveal timers
 const flickerTimer = ref<number | undefined>(undefined)
@@ -89,15 +88,9 @@ onUnmounted(() => {
       </section>
 
       <!-- EXPERIENCE SECTION -->
-      <section class="col-span-12 lg:col-span-8 border-2 border-primary-fixed-dim p-6 relative group hover:glow-border transition-all duration-300 bg-black/40">
+      <section class="col-span-12 border-2 border-primary-fixed-dim p-6 relative group hover:glow-border transition-all duration-300 bg-black/40">
         <div class="absolute -top-3 left-4 bg-background px-2 text-label-md font-bold text-primary-fixed-dim border-x-2 border-primary-fixed-dim">[ EXPERIENCE.EXE ]</div>
         <ExperienceSection :items="experienceItems" />
-      </section>
-
-      <!-- VOLUNTEER SECTION -->
-      <section class="col-span-12 lg:col-span-4 border-2 border-primary-fixed-dim p-6 relative group hover:glow-border transition-all duration-300 bg-black/40">
-        <div class="absolute -top-3 left-4 bg-background px-2 text-label-md font-bold text-primary-fixed-dim border-x-2 border-primary-fixed-dim">[ VOLUNTEER.LOG ]</div>
-        <VolunteerSection :items="volunteerItems" :metric="volunteerMetric" />
       </section>
     </div>
     </div>

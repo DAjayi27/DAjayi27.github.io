@@ -50,14 +50,27 @@ export const experienceItems = [
     years: '2013',
     bullets: ['- Assisted in prototyping spatial-compute scheduling algorithms.'],
   },
+  // Volunteer / community entries merged into experience list
+  {
+    title: 'OPEN-SOURCE MAINTAINER',
+    company: 'Retro_Terminal_Kit (GitHub)',
+    bullets: ['- Maintained and curated the retro terminal UI toolkit.'],
+  },
+  {
+    title: 'TECH MENTOR',
+    company: 'CodeForHumanity Non-Profit',
+    bullets: ['- Mentored students in fullstack and systems development.'],
+  },
+  {
+    title: 'CONFERENCE SPEAKER',
+    company: 'OSDEV Summit 2022',
+    bullets: ['- Presented on low-latency UI patterns for embedded GUIs.'],
+  },
+  {
+    title: 'WORKSHOP LEAD',
+    company: 'Local Hack Day - Embedded Systems',
+    bullets: ['- Led hands-on workshops on embedded board bring-up.'],
+  },
 ]
 
-export const volunteerItems = [
-  { title: 'OPEN-SOURCE MAINTAINER', meta: 'Retro_Terminal_Kit (GitHub)' },
-  { title: 'TECH MENTOR', meta: 'CodeForHumanity Non-Profit' },
-  { title: 'CONFERENCE SPEAKER', meta: 'OSDEV Summit 2022' },
-  { title: 'WORKSHOP LEAD', meta: 'Local Hack Day - Embedded Systems' },
-]
-
-export const volunteerMetric = 8
 

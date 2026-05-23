@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount } from 'vue'
+import { ref, computed } from 'vue'
 
 type ExperienceItem = {
   title: string
@@ -10,116 +10,47 @@ type ExperienceItem = {
 }
 const props = defineProps<{ items: ExperienceItem[] }>()
 
-const containerRef = ref<HTMLElement | null>(null)
-const currentIndex = ref(0)
-let observer: IntersectionObserver | null = null
-
-function scrollToIndex(i: number) {
-  const container = containerRef.value
-  if (!container) return
-  const items = container.querySelectorAll<HTMLElement>('.exp-item')
-  const el = items[i]
-  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
-}
-
-function prev() {
-  if (currentIndex.value > 0) {
-    currentIndex.value -= 1
-    scrollToIndex(currentIndex.value)
-  }
-}
-
-function next() {
-  if (currentIndex.value < props.items.length - 1) {
-    currentIndex.value += 1
-    scrollToIndex(currentIndex.value)
-  }
-}
-
-onMounted(() => {
-  const root = containerRef.value
-  if (!root) return
-
-  observer = new IntersectionObserver(
-    entries => {
-      // pick the entry with highest intersectionRatio
-      let bestIndex = currentIndex.value
-      let bestRatio = 0
-      entries.forEach(entry => {
-        const el = entry.target as HTMLElement
-        const ratio = entry.intersectionRatio
-        if (ratio > bestRatio) {
-          bestRatio = ratio
-          const idx = Number(el.dataset.index)
-          if (!Number.isNaN(idx)) bestIndex = idx
-        }
-      })
-      currentIndex.value = bestIndex
-    },
-    { root, threshold: [0.25, 0.5, 0.75] }
-  )
-
-  const items = root.querySelectorAll<HTMLElement>('.exp-item')
-  items.forEach(el => observer?.observe(el))
-})
-
-onBeforeUnmount(() => {
-  observer?.disconnect()
-})
+const COLLAPSED_COUNT = 2
+const expanded = ref(false)
+const displayedItems = computed(() => (expanded.value ? props.items : props.items.slice(0, COLLAPSED_COUNT)))
+function toggle() { expanded.value = !expanded.value }
 </script>
 
 <template>
   <div class="space-y-4 pt-2">
-    <div class="relative">
-      <div ref="containerRef" class="exp-carousel overflow-y-auto snap-y snap-mandatory scroll-smooth max-h-64 lg:max-h-80 touch-pan-y">
-        <div
-          v-for="(exp, idx) in props.items"
-          :key="idx"
-          class="exp-item snap-start pl-4 pr-4 py-4 h-64 lg:h-80"
-          :data-index="idx"
-        >
-          <div :class="exp.tag ? 'border-l-2 border-primary-fixed-dim pl-4' : 'border-l-2 border-outline-variant pl-4'">
-            <div class="flex justify-between items-start">
-              <div class="flex-1">
-                <h4 class="text-body-sm font-bold">{{ exp.title }}</h4>
-                <div class="flex items-center justify-between gap-4">
-                  <span class="text-label-sm text-primary-fixed-dim font-semibold">{{ exp.company }}</span>
-                  <span class="text-label-sm text-primary-fixed-dim opacity-80">{{ exp.years ?? '' }}</span>
-                </div>
-              </div>
-              <div v-if="exp.tag" class="ml-4 shrink-0 bg-primary-fixed-dim text-background px-2 text-label-sm font-bold">{{ exp.tag }}</div>
-            </div>
-            <div v-if="exp.bullets" class="mt-2 space-y-1">
-              <p v-for="(b, i) in exp.bullets" :key="i" class="text-body-sm opacity-80">{{ b }}</p>
+    <div :class="['space-y-4', !expanded ? 'collapsed' : '']">
+      <div v-for="(exp, idx) in displayedItems" :key="idx" :class="exp.tag ? 'border-l-2 border-primary-fixed-dim pl-4' : 'border-l-2 border-outline-variant pl-4'">
+        <div class="flex justify-between items-start py-3">
+          <div class="flex-1">
+            <h4 class="text-body-sm font-bold">{{ exp.title }}</h4>
+            <div class="flex items-center justify-between gap-4">
+              <span class="text-label-sm text-primary-fixed-dim font-semibold">{{ exp.company }}</span>
+              <span class="text-label-sm text-primary-fixed-dim opacity-80">{{ exp.years ?? '' }}</span>
             </div>
           </div>
+          <div v-if="exp.tag" class="ml-4 shrink-0 bg-primary-fixed-dim text-background px-2 text-label-sm font-bold">{{ exp.tag }}</div>
         </div>
-      </div>
-
-      <!-- controls -->
-      <div class="absolute top-2 right-2 flex gap-2">
-        <button @click="prev" :disabled="currentIndex===0" aria-label="Previous" class="px-2 py-1 border border-outline-variant text-label-sm">‹</button>
-        <button @click="next" :disabled="currentIndex===props.items.length-1" aria-label="Next" class="px-2 py-1 border border-outline-variant text-label-sm">›</button>
+        <div v-if="exp.bullets" class="mt-2 space-y-1 pb-2">
+          <p v-for="(b, i) in exp.bullets" :key="i" class="text-body-sm opacity-80">{{ b }}</p>
+        </div>
       </div>
     </div>
 
-    <div class="flex items-center justify-center gap-3">
-      <div class="text-label-sm opacity-70">{{ currentIndex + 1 }} / {{ props.items.length }}</div>
-      <div class="flex gap-1">
-        <button
-          v-for="(_, i) in props.items"
-          :key="i"
-          @click="scrollToIndex(i)"
-          :aria-label="`Go to item ${i+1}`"
-          :class="['w-2 h-2 rounded-full', currentIndex === i ? 'bg-primary-fixed-dim' : 'bg-primary-fixed-dim/20']"
-        />
-      </div>
+    <div v-if="props.items.length > COLLAPSED_COUNT" class="pt-2">
+      <button @click="toggle" class="px-3 py-1 text-label-sm font-bold text-primary-fixed-dim hover:brightness-125 transition-colors" :aria-expanded="expanded">{{ expanded ? 'SHOW LESS' : 'SHOW MORE' }}</button>
     </div>
   </div>
 </template>
 
 <style scoped>
-.exp-carousel { -webkit-overflow-scrolling: touch; }
-.exp-item { scroll-snap-align: start; }
-.exp-item:focus { outline: none; }
+/* When collapsed, limit height so the section fits comfortably in viewport;
+   adjust the calc to taste (subtract nav/header/footer heights and margins). */
+.collapsed {
+  max-height: calc(100vh - 12rem);
+  overflow: auto;
+  padding-right: 0.25rem; /* room for scrollbar */
+}
+
+.collapsed::-webkit-scrollbar { width: 10px; }
+.collapsed::-webkit-scrollbar-thumb { background: rgba(0,230,57,0.26); border-radius: 999px; }
 </style>

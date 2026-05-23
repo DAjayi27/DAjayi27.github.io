@@ -115,3 +115,64 @@
   from { transform: translateY(-100%); }
   to { transform: translateY(100vh); }
 }
+
+/* Themed scrollbars */
+:root {
+  --scrollbar-track: var(--color-surface-container-low);
+  /* brighter default thumb for visibility */
+  --scrollbar-thumb: rgba(0, 230, 57, 0.26);
+  --scrollbar-thumb-hover: rgba(0, 230, 57, 0.44);
+  --scrollbar-thumb-border: rgba(0, 230, 57, 0.95);
+}
+
+/* WebKit-based browsers */
+*::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 999px;
+  border: 2px solid transparent; /* space for glow */
+  background-clip: padding-box;
+  transition: box-shadow 240ms ease, background 180ms ease, border-color 180ms ease;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+  border-color: var(--scrollbar-thumb-border);
+}
+
+/* hide native scrollbar arrow buttons (WebKit) to remove top/bottom arrows */
+*::-webkit-scrollbar-button { display: none; }
+*::-webkit-scrollbar-corner { background: var(--scrollbar-track); }
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+
+/* A reusable class for components that want the themed scrollbar explicitly */
+.custom-scrollbar {
+  scrollbar-width: thin;
+}
+
+/* Scoped fallback for non-WebKit browsers to hint the thumb color via an inset box-shadow on scrollable areas */
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+}
+
+/* Darker thumb variant for high-contrast / bright backgrounds */
+.custom-scrollbar.dark-thumb::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,0.65);
+  border-color: rgba(0,0,0,0.85);
+}
+.custom-scrollbar.dark-thumb { scrollbar-color: rgba(0,0,0,0.65) var(--scrollbar-track); }
+
+
