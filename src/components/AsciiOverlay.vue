@@ -8,7 +8,7 @@ const emits = defineEmits<{
 const container = useTemplateRef("container")
 const visible = ref(true)
 const isAnimatingOut = ref(false)
-const currentGlyph = ref(0)
+const ellipsisDots = ref(0)
 const tickerInterval = ref<number | null>(null)
 
 type Glyph = string[]
@@ -67,32 +67,38 @@ const glyphs: Glyph[] = [
 
 const rows = glyphs[0]!.length
 
-const displayedArt = computed(() =>
-  Array.from({ length: rows }, (_, row) =>
+const displayedArt = computed(() => {
+  const glyphsToShow = glyphs.length
+  const mainArt = Array.from({ length: rows }, (_, row) =>
     glyphs
-      .slice(0, currentGlyph.value)
+      .slice(0, glyphsToShow)
       .map(glyph => glyph[row])
       .join('  '),
-  ).join('\n'),
-)
+  ).join('\n')
+
+  const dots = '.'.repeat(ellipsisDots.value)
+  return `${mainArt}\n\n${dots}`
+})
 
 const startTypewriter = () => {
-  const msPerGlyph = 250
+  const msPerDot = 300
+  let dotCycle = 0
 
   tickerInterval.value = window.setInterval(() => {
-    if (currentGlyph.value < glyphs.length) {
-      currentGlyph.value++
-      return
-    }
+    dotCycle++
+    ellipsisDots.value = ((dotCycle % 3) + 1) // Cycles through 1, 2, 3 (always at least one dot)
 
-    if (tickerInterval.value) {
-      clearInterval(tickerInterval.value)
-      tickerInterval.value = null
-    }
+    // After ~5 seconds, start fade out
+    if (dotCycle >= 17) {
+      if (tickerInterval.value) {
+        clearInterval(tickerInterval.value)
+        tickerInterval.value = null
+      }
 
-    isAnimatingOut.value = true
-    container.value?.classList.add('animation-out')
-  }, msPerGlyph)
+      isAnimatingOut.value = true
+      container.value?.classList.add('animation-out')
+    }
+  }, msPerDot)
 }
 
 const handleAnimationEnd = () => {
@@ -140,6 +146,7 @@ onUnmounted(() => {
 .ascii-pre {
   font-family: var(--font-label-md);
   line-height: 1;
+  text-shadow: 0 0 6px rgba(0,230,57,0.8);
 }
 
 @keyframes ascii-fade {
