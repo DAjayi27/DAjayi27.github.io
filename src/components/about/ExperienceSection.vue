@@ -14,11 +14,14 @@ const props = defineProps<{ items: ExperienceItem[] }>()
     <div class="space-y-4">
       <div v-for="(exp, idx) in props.items" :key="idx" class="relative pl-4" :class="exp.tag ? 'border-l-2 border-primary-fixed-dim' : 'border-l-2 border-outline-variant'">
         <div class="flex justify-between items-start">
-          <div>
+          <div class="flex-1">
             <h4 class="text-body-sm font-bold">{{ exp.title }}</h4>
-            <p class="text-label-sm text-outline-variant">{{ exp.company }} {{ exp.years ? ' // ' + exp.years : '' }}</p>
+            <div class="flex items-center justify-between gap-4">
+              <span class="text-label-sm text-primary-fixed-dim font-semibold">{{ exp.company }}</span>
+              <span class="text-label-sm text-primary-fixed-dim opacity-80">{{ exp.years ?? '' }}</span>
+            </div>
           </div>
-          <div v-if="exp.tag" class="bg-primary-fixed-dim text-background px-2 text-label-sm font-bold">{{ exp.tag }}</div>
+          <div v-if="exp.tag" class="ml-4 flex-shrink-0 bg-primary-fixed-dim text-background px-2 text-label-sm font-bold">{{ exp.tag }}</div>
         </div>
         <div v-if="exp.bullets" class="mt-2 space-y-1">
           <p v-for="(b, i) in exp.bullets" :key="i" class="text-body-sm opacity-80">{{ b }}</p>

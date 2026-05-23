@@ -4,7 +4,7 @@ import BioSection from '@/components/about/BioSection.vue'
 import EducationSection from '@/components/about/EducationSection.vue'
 import ExperienceSection from '@/components/about/ExperienceSection.vue'
 import VolunteerSection from '@/components/about/VolunteerSection.vue'
-import AsciiDivider from '@/components/about/AsciiDivider.vue'
+import { bioData, educationItems, experienceItems, volunteerItems, volunteerMetric } from '@/data/about'
 
 // Flicker + reveal timers
 const flickerTimer = ref<number | undefined>(undefined)
@@ -12,43 +12,7 @@ const revealTimeouts: number[] = []
 
 const mainRef = ref<HTMLElement | null>(null)
 
-// Data objects passed into components
-const bioData = {
-  description:
-    'Full-Stack Engineer & UI Architect specializing in low-latency system interfaces and high-fidelity user experiences. Focused on bridging the gap between hardware efficiency and intuitive software design.',
-  bullets: ['ARCHITECTURE: MICROSERVICES', 'FRONTEND: REACT/TAILWIND', 'BACKEND: RUST/NODE.JS'],
-  statusLabel: 'STATUS',
-  statusValue: 'AVAILABLE_FOR_LINK',
-}
-
-const educationItems = [
-  { degree: 'M.S. COMPUTER SCIENCE', school: 'CYBERNETICS INSTITUTE', years: '2018-2020' },
-  { degree: 'B.S. INTERACTIVE DESIGN', school: 'STATE POLYTECHNIC', years: '2014-2018' },
-]
-
-const experienceItems = [
-  {
-    title: 'SENIOR CORE ENGINEER',
-    company: 'NEURAL-SYNAPSE CORP',
-    years: '2021-PRESENT',
-    bullets: [
-      '- Architected distributed rendering pipeline for VR/AR kernels.',
-      '- Reduced latency by 45% using custom memory allocation algorithms.',
-    ],
-    tag: 'ACTIVE',
-  },
-  {
-    title: 'SYSTEM ARCHITECT',
-    company: 'GRID_FLOW SYSTEMS',
-    years: '2019-2021',
-    bullets: ['- Lead developer for the initial DARA_OS prototype UI.'],
-  },
-]
-
-const volunteerItems = [
-  { title: 'OPEN-SOURCE MAINTAINER', meta: 'Retro_Terminal_Kit (GitHub)' },
-  { title: 'TECH MENTOR', meta: 'CodeForHumanity Non-Profit' },
-]
+// Data objects are imported from `src/data/about.ts`
 
 onMounted(() => {
   // Flicker effect applied to the document body for subtle realism
@@ -92,7 +56,7 @@ onUnmounted(() => {
 
   <!-- Main Terminal Content -->
   <main ref="mainRef" class="flex-1 overflow-y-auto px-margin-desktop py-base relative custom-scrollbar">
-    <div class="max-w-6xl mx-auto w-full">
+    <div class="mx-auto w-full">
     <!-- Command Header -->
     <div class="mb-gutter text-body-md">
       <div class="flex items-center gap-2">
@@ -133,7 +97,7 @@ onUnmounted(() => {
       <!-- VOLUNTEER SECTION -->
       <section class="col-span-12 lg:col-span-4 border-2 border-primary-fixed-dim p-6 relative group hover:glow-border transition-all duration-300 bg-black/40">
         <div class="absolute -top-3 left-4 bg-background px-2 text-label-md font-bold text-primary-fixed-dim border-x-2 border-primary-fixed-dim">[ VOLUNTEER.LOG ]</div>
-        <VolunteerSection :items="volunteerItems" :metric="6" />
+        <VolunteerSection :items="volunteerItems" :metric="volunteerMetric" />
       </section>
     </div>
     </div>
