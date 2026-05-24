@@ -165,6 +165,7 @@
       <TerminalOutput content="DARA OS V1.0 - KERNEL LOADED AT 0x00400000" />
       <TerminalOutput content="WELCOME TO THE DARA INTERACTIVE ENVIRONMENT" />
       <TerminalOutput content="TYPE 'HELP' OR '?' FOR COMMAND LISTING" />
+      <TerminalOutput content="TYPE 'HOME' FOR PAGE MENU" />
     </div>
 
     <!-- Terminal Output -->
