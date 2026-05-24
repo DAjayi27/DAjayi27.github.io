@@ -119,7 +119,7 @@ onUnmounted(() => {
   <div
     v-if="visible"
     ref="container"
-    :class="'ascii-overlay fixed inset-0 z-50 flex items-center justify-center bg-black/60'"
+    :class="'ascii-overlay fixed inset-0 z-50 flex items-center justify-center bg-black'"
     @animationend="handleAnimationEnd"
   >
     <div class="ascii-box text-(--color-surface-tint)">
