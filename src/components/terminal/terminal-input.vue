@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { nextTick, onMounted, useTemplateRef } from 'vue'
+import { nextTick, onMounted, useTemplateRef, watch } from 'vue'
 
 const emit = defineEmits<{
   submit:[content:string]
@@ -9,7 +9,7 @@ const props =  defineProps<{
   historyStack:string[]
 }>();
 
-let historyIndex = 0;
+let historyIndex = props.historyStack.length;
 
 
 const inputBox = useTemplateRef<HTMLElement>('inputBox')
@@ -32,20 +32,33 @@ function handleKeyPress(event: KeyboardEvent) {
 
 
   if (event.key === 'ArrowUp' ) {
-    debugger;
-    historyIndex = props.historyStack.length - 1 > 0 ? props.historyStack.length - 1 : 0;
-    historyIndex = props.historyStack.length - 1 > 0 ? props.historyStack.length - 1 : 0;
-    popHistory(props.historyStack,historyIndex);
-    return;
+    if (!props.historyStack || props.historyStack.length === 0) return
+
+    if (historyIndex > 0) {
+      historyIndex--
+    } else {
+      historyIndex = 0
+    }
+
+    popHistory(props.historyStack, historyIndex)
+    return
   }
 
   if (event.key === 'ArrowDown' ) {
-    historyIndex = props.historyStack.length + 1 < props.historyStack.length  ? props.historyStack.length + 1 : props.historyStack.length - 1;
-    popHistory(props.historyStack,historyIndex);
-    return;
-  }
+    if (!props.historyStack || props.historyStack.length === 0) return
 
-  historyIndex = 0;
+    if (historyIndex < props.historyStack.length - 1) {
+      historyIndex++
+      popHistory(props.historyStack, historyIndex)
+    } else {
+      historyIndex = props.historyStack.length
+      if (inputBox.value) inputBox.value.textContent = ''
+      focusInput()
+    }
+
+    return
+  }
+  historyIndex = props.historyStack.length
   if (event.key !== 'Enter') return
 
   event.preventDefault()
@@ -57,8 +70,15 @@ function handleKeyPress(event: KeyboardEvent) {
     inputBox.value.textContent = ''
   }
 
+  // After submitting, reset navigation index to the end so ArrowUp will show the last command
+  historyIndex = props.historyStack.length
   focusInput()
 }
+
+// Keep the historyIndex in sync if the parent updates the history stack
+watch(() => props.historyStack.length, (len) => {
+  historyIndex = len
+})
 
 function handleBlur() {
   focusInput()

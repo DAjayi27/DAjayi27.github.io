@@ -1,7 +1,7 @@
 <script setup lang="ts">
   import TerminalInput from '@/components/terminal/terminal-input.vue'
   import TerminalOutput from '@/components/terminal/terminal-output.vue'
-  import {nextTick, onMounted, ref} from 'vue'
+  import {nextTick, onBeforeMount, onMounted, ref} from 'vue'
   import Card from '@/components/terminal/Card.vue'
   import { useRouter } from 'vue-router'
   import { Command, isValidCommand } from '@/components/terminal/cli-controller.ts'
@@ -15,20 +15,20 @@
   const router = useRouter();
 
 
+  function pushHistory(command: string) {
+    if (historyStack.value.length < HISTORY_STACK_SIZE) {
+      historyStack.value.push(command);
+    } else {
+      historyStack.value = historyStack.value.slice(1);
+      historyStack.value.push(command);
+    }
+  }
+
   async function log(command:string,output: string) {
     const dirText = `C:\\> ${command}\n${output}`
 
     terminalOutputList.value.push(dirText)
-
-
-    if (historyStack.value.length < HISTORY_STACK_SIZE) {
-      historyStack.value.push(command);
-    }
-    else{
-     historyStack.value = historyStack.value.slice(1);
-     historyStack.value.push(command);
-    }
-
+    pushHistory(command);
 
     await nextTick();
   }
@@ -80,18 +80,22 @@
 
       case Command.CLEAR:
         terminalOutputList.value = []
+        pushHistory(command);
         showPanel.value = false;
       break
 
       case Command.HOME:
+        pushHistory(command);
         showPanel.value = true;
       break
 
       case Command.CD:
         handleChangeCommand(command,args);
+        pushHistory(command);
       break;
 
       case Command.DUMP:
+        pushHistory(command);
         donwloadResume();
       break;
 
@@ -104,10 +108,41 @@
 
 
 
+  router.beforeEach((to, from, next) => {
+    try {
+      localStorage.setItem("historyStack", JSON.stringify(historyStack.value));
+      localStorage.setItem("terminalOutputList", JSON.stringify(terminalOutputList.value));
+    } catch (e) {
+      console.warn('Failed to persist terminal state', e)
+    }
+
+    next()
+  })
 
 
   onMounted(() => {
+  })
 
+  onBeforeMount(() => {
+    try {
+      const rawHistory = localStorage.getItem("historyStack")
+      historyStack.value = rawHistory ? JSON.parse(rawHistory) : []
+    } catch (e) {
+      historyStack.value = []
+    }
+
+    try {
+      const rawOutput = localStorage.getItem("terminalOutputList")
+      terminalOutputList.value = rawOutput ? JSON.parse(rawOutput) : []
+    } catch (e) {
+      terminalOutputList.value = []
+    }
+
+    try {
+      const last = historyStack.value.length ? String(historyStack.value[historyStack.value.length - 1]).toLowerCase() : ''
+      if (last === 'home') showPanel.value = true
+    } catch (e) {
+    }
   })
 
 
