@@ -1,0 +1,178 @@
+@import url('https://fonts.googleapis.com/css2?family=Cascadia+Code:ital,wght@0,200..700;1,200..700&display=swap');
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-primary-fixed-dim: #00e639;
+  --color-primary-container: #00ff41;
+  --color-secondary-fixed: #b5f3a2;
+  --color-on-tertiary-fixed-variant: #005306;
+  --color-secondary-fixed-dim: #99d688;
+  --color-on-tertiary-container: #00710b;
+  --color-on-surface-variant: #b9ccb2;
+  --color-on-primary: #003907;
+  --color-on-error: #690005;
+  --color-outline: #84967e;
+  --color-primary: #ebffe2;
+  --color-on-primary-fixed: #002203;
+  --color-on-secondary-container: #8cc77b;
+  --color-surface-container: #2c1a24;
+  --color-outline-variant: #3b4b37;
+  --color-surface-container-highest: #432f3a;
+  --color-inverse-primary: #006e16;
+  --color-secondary: #99d688;
+  --color-inverse-on-surface: #3e2b35;
+  --color-on-secondary: #003a00;
+  --color-on-surface: #fadae9;
+  --color-on-tertiary-fixed: #002201;
+  --color-error-container: #93000a;
+  --color-secondary-container: #1e5416;
+  --color-surface: #1f0e18;
+  --color-inverse-surface: #fadae9;
+  --color-background: #1f0e18;
+  --color-surface-bright: #48333e;
+  --color-surface-dim: #1f0e18;
+  --color-on-tertiary: #003a03;
+  --color-error: #ffb4ab;
+  --color-surface-tint: #00e639;
+  --color-surface-container-low: #281620;
+  --color-surface-container-lowest: #190913;
+  --color-on-background: #fadae9;
+  --color-on-primary-fixed-variant: #00530e;
+  --color-on-secondary-fixed: #002200;
+  --color-surface-variant: #432f3a;
+  --color-on-error-container: #ffdad6;
+  --color-tertiary-fixed: #85fd75;
+  --color-tertiary: #eaffdf;
+  --color-on-secondary-fixed-variant: #1b5114;
+  --color-on-primary-container: #007117;
+  --color-tertiary-fixed-dim: #69df5c;
+  --color-primary-fixed: #72ff70;
+  --color-surface-container-high: #37242f;
+  --color-tertiary-container: #7ff670;
+
+  --font-label-md: "Cascadia Code","JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --font-label-sm: "Cascadia Code","JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --font-body-lg: "Cascadia Code","JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --font-body-md: "Cascadia Code","JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --font-headline-md: "Cascadia Code","JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --font-headline-lg: "Cascadia Code","JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --text-label-md: 12px;
+  --text-label-md--line-height: 16px;
+  --text-label-md--font-weight: 700;
+  --text-label-sm: 10px;
+  --text-label-sm--line-height: 14px;
+  --text-label-sm--font-weight: 500;
+  --text-body-lg: 20px;
+  --text-body-lg--line-height: 28px;
+  --text-body-lg--font-weight: 400;
+  --text-body-md: 20px;
+  --text-body-md--line-height: 24px;
+  --text-body-md--font-weight: 400;
+  --text-headline-md: 24px;
+  --text-headline-md--line-height: 32px;
+  --text-headline-md--font-weight: 600;
+  --text-headline-lg: 32px;
+  --text-headline-lg--line-height: 40px;
+  --text-headline-lg--letter-spacing: -0.02em;
+  --text-headline-lg--font-weight: 700;
+
+  --spacing-margin-desktop: 32px;
+}
+
+@layer base {
+  html {
+	color-scheme: dark;
+	@apply bg-background text-on-background;
+  }
+
+  body {
+	@apply min-h-screen font-body-md antialiased;
+  }
+
+  #app {
+	@apply min-h-screen;
+  }
+}
+
+
+.crt-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.02), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.02));
+  background-size: 100% 3px, 3px 100%;
+  pointer-events: none;
+  z-index: 100;
+  opacity: 0.15;
+}
+
+@keyframes scan {
+  from { transform: translateY(-100%); }
+  to { transform: translateY(100vh); }
+}
+
+/* Themed scrollbars */
+:root {
+  --scrollbar-track: var(--color-surface-container-low);
+  /* brighter default thumb for visibility */
+  --scrollbar-thumb: rgba(0, 230, 57, 0.26);
+  --scrollbar-thumb-hover: rgba(0, 230, 57, 0.44);
+  --scrollbar-thumb-border: rgba(0, 230, 57, 0.95);
+}
+
+/* WebKit-based browsers */
+*::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 999px;
+  border: 2px solid transparent; /* space for glow */
+  background-clip: padding-box;
+  transition: box-shadow 240ms ease, background 180ms ease, border-color 180ms ease;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+  border-color: var(--scrollbar-thumb-border);
+}
+
+/* hide native scrollbar arrow buttons (WebKit) to remove top/bottom arrows */
+*::-webkit-scrollbar-button { display: none; }
+*::-webkit-scrollbar-corner { background: var(--scrollbar-track); }
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+
+/* A reusable class for components that want the themed scrollbar explicitly */
+.custom-scrollbar {
+  scrollbar-width: thin;
+}
+
+/* Scoped fallback for non-WebKit browsers to hint the thumb color via an inset box-shadow on scrollable areas */
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+}
+
+/* Darker thumb variant for high-contrast / bright backgrounds */
+.custom-scrollbar.dark-thumb::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,0.65);
+  border-color: rgba(0,0,0,0.85);
+}
+.custom-scrollbar.dark-thumb { scrollbar-color: rgba(0,0,0,0.65) var(--scrollbar-track); }
+
+

@@ -1,8 +1,0 @@
-.projects {
-  display: grid;
-  row-gap: 20px;
-}
-.projects .project {
-  display: grid;
-  row-gap: 5px;
-}

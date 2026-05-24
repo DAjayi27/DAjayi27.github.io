@@ -1,8 +1,0 @@
-.experiences {
-  display: grid;
-  row-gap: 20px;
-}
-.experiences .experience {
-  display: grid;
-  row-gap: 5px;
-}

@@ -1,31 +1,35 @@
 {
-  "name": "app",
+  "name": "vue-project",
   "version": "0.0.0",
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite --host",
-    "build": "vite build --mode github",
+    "dev": "vite",
+    "build": "run-p type-check \"build-only {@}\" --",
     "preview": "vite preview",
-    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
+    "build-only": "vite build",
+    "type-check": "vue-tsc --build",
+    "format": "oxfmt src"
   },
   "dependencies": {
-    "@awesome.me/2a5a9e3f48": "file:lnpm i --save @fortawesome/pro-solid-svg-iconsnpm i --save @fortawesome/pro-regular-svg-iconsnpm i --save @fortawesome/pro-light-svg-iconsnpm i --save @fortawesome/pro-thin-svg-iconsnpm i --save @fortawesome/pro-duotone-svg-iconsnpm i --save @fortawesome/duotone-regular-svg-iconsnpm i --save @fortawesome/duotone-light-svg-iconsnpm i --save @fortawesome/duotone-thin-svg-iconsnpm i --save @fortawesome/sharp-solid-svg-iconsnpm i --save @fortawesome/sharp-regular-svg-iconsnpm i --save @fortawesome/sharp-light-svg-iconsnpm i --save @fortawesome/sharp-thin-svg-iconsnpm i --save @fortawesome/sharp-duotone-solid-svg-iconsnpm i --save @fortawesome/sharp-duotone-regular-svg-iconsnpm i --save @fortawesome/sharp-duotone-light-svg-iconsnpm i --save @fortawesome/sharp-duotone-thin-svg-iconsatest",
-    "@fortawesome/fontawesome-svg-core": "^6.7.2",
-    "@fortawesome/free-brands-svg-icons": "^6.7.2",
-    "@fortawesome/free-regular-svg-icons": "^6.7.2",
-    "@fortawesome/free-solid-svg-icons": "^6.7.2",
-    "@fortawesome/vue-fontawesome": "^3.0.8",
-    "dotenv": "^16.4.7",
-    "vue": "^3.4.29"
+    "@tailwindcss/vite": "^4.3.0",
+    "tailwindcss": "^4.3.0",
+    "vue": "^3.5.32",
+    "vue-router": "^5.0.4"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^5.0.5",
-    "eslint": "^8.57.0",
-    "eslint-plugin-vue": "^9.23.0",
-    "sass": "^1.83.0",
-    "sass-loader": "^16.0.4",
-    "vite": "^5.4.11",
-    "vite-plugin-vue-devtools": "^7.3.1"
+    "@tsconfig/node24": "^24.0.4",
+    "@types/node": "^24.12.2",
+    "@vitejs/plugin-vue": "^6.0.6",
+    "@vue/tsconfig": "^0.9.1",
+    "npm-run-all2": "^8.0.4",
+    "oxfmt": "^0.45.0",
+    "typescript": "~6.0.0",
+    "vite": "^8.0.13",
+    "vite-plugin-vue-devtools": "^8.1.1",
+    "vue-tsc": "^3.2.6"
+  },
+  "engines": {
+    "node": "^20.19.0 || >=22.12.0"
   }
 }
