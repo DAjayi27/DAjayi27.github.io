@@ -110,8 +110,8 @@
 
   router.beforeEach((to, from, next) => {
     try {
-      localStorage.setItem("historyStack", JSON.stringify(historyStack.value));
-      localStorage.setItem("terminalOutputList", JSON.stringify(terminalOutputList.value));
+      sessionStorage.setItem("historyStack", JSON.stringify(historyStack.value));
+      sessionStorage.setItem("terminalOutputList", JSON.stringify(terminalOutputList.value));
     } catch (e) {
       console.warn('Failed to persist terminal state', e)
     }
@@ -125,14 +125,14 @@
 
   onBeforeMount(() => {
     try {
-      const rawHistory = localStorage.getItem("historyStack")
+      const rawHistory = sessionStorage.getItem("historyStack")
       historyStack.value = rawHistory ? JSON.parse(rawHistory) : []
     } catch (e) {
       historyStack.value = []
     }
 
     try {
-      const rawOutput = localStorage.getItem("terminalOutputList")
+      const rawOutput = sessionStorage.getItem("terminalOutputList")
       terminalOutputList.value = rawOutput ? JSON.parse(rawOutput) : []
     } catch (e) {
       terminalOutputList.value = []
