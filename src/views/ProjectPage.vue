@@ -158,9 +158,6 @@ onUnmounted(() => {
         :project="card"
       />
     </div>
-    <div class="pt-4">
-      <button @click="router.back()" class="px-4 py-2 border border-(--color-surface-tint) text-(--color-surface-tint)">Back</button>
-    </div>
   </div>
 </template>
 
