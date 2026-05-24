@@ -1,20 +1,35 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue'
+import {ref, onMounted, onUnmounted, useTemplateRef} from 'vue'
 import BioSection from '@/components/about/BioSection.vue'
 import EducationSection from '@/components/about/EducationSection.vue'
 import ExperienceSection from '@/components/about/ExperienceSection.vue'
 import { bioData, educationItems, experienceItems } from '@/data/about'
+import {useRouter} from "vue-router";
 
-// Flicker + reveal timers
 const flickerTimer = ref<number | undefined>(undefined)
 const revealTimeouts: number[] = []
 
 const mainRef = ref<HTMLElement | null>(null)
 
-// Data objects are imported from `src/data/about.ts`
+let main =  ref<string>("");
+
+const ellipsis = useTemplateRef("ellipsis");
+let ellipsisFuncRef:number;
+
+const router = useRouter()
+
+function handleShortcut(e: KeyboardEvent) {
+  const lowerKey = e.key.toLowerCase()
+
+  if (e.ctrlKey && !e.shiftKey && !e.altKey && !e.metaKey && lowerKey === 'c') {
+    e.preventDefault()
+    e.stopPropagation()
+    document.removeEventListener('keydown', handleShortcut)
+    router.push({ name: 'home' })
+  }
+}
 
 onMounted(() => {
-  // Flicker effect applied to the document body for subtle realism
   flickerTimer.value = window.setInterval(() => {
     if (Math.random() > 0.99) {
       document.body.style.opacity = '0.9'
@@ -25,7 +40,6 @@ onMounted(() => {
     }
   }, 100)
 
-  // Reveal child elements inside the main container with a stagger
   if (mainRef.value) {
     const nodes = Array.from(mainRef.value.querySelectorAll('section, .ascii-art, img')) as HTMLElement[]
     nodes.forEach((el, index) => {
@@ -40,6 +54,24 @@ onMounted(() => {
       revealTimeouts.push(timeout)
     })
   }
+
+  ellipsisFuncRef = window.setInterval(() => {
+
+    if (main.value != null){
+
+      if (main.value.length < 6){
+        main.value += ".";
+      }
+      else{
+        main.value = "."
+      }
+
+    }
+
+  },1000);
+
+  document.addEventListener('keydown', handleShortcut)
+
 })
 
 onUnmounted(() => {
@@ -47,6 +79,8 @@ onUnmounted(() => {
     window.clearInterval(flickerTimer.value)
   }
   revealTimeouts.forEach(t => window.clearTimeout(t))
+  window.clearInterval(ellipsisFuncRef);
+  document.removeEventListener('keydown', handleShortcut)
 })
 
 </script>
@@ -58,11 +92,7 @@ onUnmounted(() => {
     <div class="mx-auto w-full">
     <!-- Command Header -->
     <div class="mb-gutter text-body-md">
-      <div class="flex items-center gap-2">
-        <span>C:\SYS\INFO&gt;</span>
-        <span class="text-primary-fixed-dim">TYPE ABOUT.TXT</span>
-      </div>
-      <div class="mt-2 text-outline-variant">ACCESSING LOCAL STORAGE... DONE.</div>
+      <div class="mt-2 text-outline-variant">ACCESSING LOCAL STORAGE<span ref="ellipsis">{{main}}</span></div>
     </div>
     <!-- ASCII Divider -->
     <pre class="ascii-art text-primary-fixed-dim mb-6 opacity-60">____________________________________________________________________________________________________

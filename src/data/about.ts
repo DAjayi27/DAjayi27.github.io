@@ -4,6 +4,10 @@ export const bioData = {
   bullets: ['ARCHITECTURE: MICROSERVICES', 'FRONTEND: REACT/TAILWIND', 'BACKEND: RUST/NODE.JS', 'DEVOPS: KUBERNETES / CI-CD'],
   statusLabel: 'STATUS',
   statusValue: 'AVAILABLE_FOR_LINK',
+  socialLinks: [
+    { label: 'GitHub', icon: 'code', href: 'https://github.com/' },
+    { label: 'LinkedIn', icon: 'work', href: 'https://www.linkedin.com/' },
+  ],
 }
 
 export const educationItems = [
@@ -19,6 +23,8 @@ export const experienceItems = [
     years: '2021-PRESENT',
     bullets: [
       '- Architected distributed rendering pipeline for VR/AR kernels.',
+      '- Reduced latency by 45% using custom memory allocation algorithms.',
+      '- Reduced latency by 45% using custom memory allocation algorithms.',
       '- Reduced latency by 45% using custom memory allocation algorithms.',
     ],
     tag: 'ACTIVE',

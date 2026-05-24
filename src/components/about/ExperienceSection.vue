@@ -10,7 +10,7 @@ type ExperienceItem = {
 }
 const props = defineProps<{ items: ExperienceItem[] }>()
 
-const COLLAPSED_COUNT = 2
+const COLLAPSED_COUNT = 1
 const expanded = ref(false)
 const displayedItems = computed(() => (expanded.value ? props.items : props.items.slice(0, COLLAPSED_COUNT)))
 function toggle() { expanded.value = !expanded.value }
@@ -22,13 +22,15 @@ function toggle() { expanded.value = !expanded.value }
       <div v-for="(exp, idx) in displayedItems" :key="idx" :class="exp.tag ? 'border-l-2 border-primary-fixed-dim pl-4' : 'border-l-2 border-outline-variant pl-4'">
         <div class="flex justify-between items-start py-3">
           <div class="flex-1">
-            <h4 class="text-body-sm font-bold">{{ exp.title }}</h4>
+            <div class="flex items-center justify-between gap-4">
+              <h4 class="text-body-sm font-bold">{{ exp.title }}</h4>
+              <div v-if="exp.tag" class="ml-4 shrink-0 bg-primary-fixed-dim text-background px-2 text-label-sm font-bold">{{ exp.tag }}</div>
+            </div>
             <div class="flex items-center justify-between gap-4">
               <span class="text-label-sm text-primary-fixed-dim font-semibold">{{ exp.company }}</span>
               <span class="text-label-sm text-primary-fixed-dim opacity-80">{{ exp.years ?? '' }}</span>
             </div>
           </div>
-          <div v-if="exp.tag" class="ml-4 shrink-0 bg-primary-fixed-dim text-background px-2 text-label-sm font-bold">{{ exp.tag }}</div>
         </div>
         <div v-if="exp.bullets" class="mt-2 space-y-1 pb-2">
           <p v-for="(b, i) in exp.bullets" :key="i" class="text-body-sm opacity-80">{{ b }}</p>
@@ -43,12 +45,11 @@ function toggle() { expanded.value = !expanded.value }
 </template>
 
 <style scoped>
-/* When collapsed, limit height so the section fits comfortably in viewport;
-   adjust the calc to taste (subtract nav/header/footer heights and margins). */
+
 .collapsed {
-  max-height: calc(100vh - 12rem);
-  overflow: auto;
-  padding-right: 0.25rem; /* room for scrollbar */
+  max-height: 15vh;
+  overflow: hidden;
+
 }
 
 .collapsed::-webkit-scrollbar { width: 10px; }

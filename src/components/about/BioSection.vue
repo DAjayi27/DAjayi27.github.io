@@ -4,6 +4,11 @@ interface BioData {
   bullets?: string[]
   statusLabel?: string
   statusValue?: string
+  socialLinks?: {
+    label: string
+    icon: string
+    href: string
+  }[]
 }
 
 const props = defineProps<{ data: BioData }>()
@@ -19,10 +24,24 @@ const props = defineProps<{ data: BioData }>()
       <div class="border-l border-outline-variant pl-4">
         <div class="text-label-sm uppercase text-outline-variant">{{ props.data.statusLabel ?? 'STATUS' }}</div>
         <div class="text-primary-fixed-dim font-bold animate-pulse">{{ props.data.statusValue ?? '' }}</div>
+        <div v-if="props.data.socialLinks?.length" class="mt-4 flex items-center gap-4">
+          <a
+            v-for="link in props.data.socialLinks"
+            :key="link.label"
+            :href="link.href"
+            target="_blank"
+            rel="noreferrer"
+            class="flex items-center gap-2 text-label-sm text-primary-fixed-dim hover:text-primary-container transition-colors"
+          >
+            <span class="material-symbols-outlined text-sm">{{ link.icon }}</span>
+            <span>{{ link.label }}</span>
+          </a>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <style scoped>
+.material-symbols-outlined { font-variation-settings: 'FILL' 1; }
 </style>
