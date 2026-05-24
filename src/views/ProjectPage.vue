@@ -89,10 +89,6 @@ const systemMetrics = ref<SystemMetric[]>([
 
 let statusTimer: number | undefined
 
-function goBack() {
-  router.back()
-}
-
 function refreshSystemMetrics() {
   systemMetrics.value = [
     { label: 'CPU LOAD', value: `${Math.floor(Math.random() * 20) + 35}%`, percent: Math.floor(Math.random() * 20) + 35 },
@@ -163,7 +159,7 @@ onUnmounted(() => {
       />
     </div>
     <div class="pt-4">
-      <button @click="goBack" class="px-4 py-2 border border-(--color-surface-tint) text-(--color-surface-tint)">Back</button>
+      <button @click="router.back()" class="px-4 py-2 border border-(--color-surface-tint) text-(--color-surface-tint)">Back</button>
     </div>
   </div>
 </template>
