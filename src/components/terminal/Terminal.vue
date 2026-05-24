@@ -30,14 +30,19 @@
     const cmd = uCommand as Command
 
     switch (cmd) {
-      case Command.HELP:
-        log(command, 'Available commands: help, clear, about, projects, contact')
+
+      case Command.HELP :
+      case Command.QUESTION:
+        log(command, 'Available commands: help, clear, cd')
         break
+
+
       case Command.CLEAR:
-        // clear the visible terminal output
         terminalOutputList.value = []
           showPanel.value = false;
         break
+
+
       case Command.ABOUT:
         log(command, 'About command received')
         break
@@ -91,7 +96,7 @@
     <div class="mt-4 space-y-1">
       <TerminalOutput content="DARA OS V1.0 - KERNEL LOADED AT 0x00400000" />
       <TerminalOutput content="WELCOME TO THE DARA INTERACTIVE ENVIRONMENT" />
-      <TerminalOutput content="TYPE 'HELP' FOR COMMAND LISTING" />
+      <TerminalOutput content="TYPE 'HELP' OR '?' FOR COMMAND LISTING" />
     </div>
 
     <!-- Terminal Output -->

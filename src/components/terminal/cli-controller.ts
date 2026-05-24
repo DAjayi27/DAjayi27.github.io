@@ -1,5 +1,6 @@
 export enum Command {
   HELP = 'HELP',
+  QUESTION = '?',
   CLEAR = 'CLEAR',
   ABOUT = 'ABOUT',
   PROJECTS = 'PROJECTS',

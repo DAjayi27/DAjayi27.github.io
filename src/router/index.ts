@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Terminal from '@/components/terminal/terminal.vue'
+import Terminal from '@/components/terminal/Terminal.vue'
 import ProjectPage from '@/views/ProjectPage.vue'
 import AboutPage from '@/views/AboutPage.vue'
 import ContactPage from '@/views/ContactPage.vue'
