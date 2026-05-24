@@ -1,11 +1,10 @@
 export enum Command {
-  HELP = 'HELP',
+  HELP = 'help',
   QUESTION = '?',
-  CLEAR = 'CLEAR',
-  ABOUT = 'ABOUT',
-  PROJECTS = 'PROJECTS',
-  CONTACT = 'CONTACT',
-  HOME = 'HOME',
+  CLEAR = 'clear',
+  HOME = 'home',
+  CD = 'cd',
+  DUMP = 'objdump',
 }
 
 export type ValidCommand = Command
@@ -13,7 +12,7 @@ export type ValidCommand = Command
 export const validCommands: ValidCommand[] = Object.values(Command)
 
 export function isValidCommand(command: string): command is ValidCommand {
-  return validCommands.includes(command.toUpperCase() as ValidCommand)
+  return validCommands.includes(command.toLowerCase() as ValidCommand)
 }
 
 void validCommands.length

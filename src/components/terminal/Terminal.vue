@@ -6,55 +6,95 @@
   import { useRouter } from 'vue-router'
   import { Command, isValidCommand } from '@/components/terminal/cli-controller.ts'
 
+
+  const HISTORY_STACK_SIZE = 10;
+
   const terminalOutputList = ref<string[]>([])
+  const historyStack = ref<string[]>([])
   const showPanel = ref(false);
+  const router = useRouter();
 
 
   async function log(command:string,output: string) {
-    // use actual characters instead of HTML entities — the content is rendered as text
     const dirText = `C:\\> ${command}\n${output}`
 
     terminalOutputList.value.push(dirText)
+
+
+    if (historyStack.value.length < HISTORY_STACK_SIZE) {
+      historyStack.value.push(command);
+    }
+    else{
+     historyStack.value = historyStack.value.slice(1);
+     historyStack.value.push(command);
+    }
+
+
     await nextTick();
   }
 
-  function handleCommand(command: string) {
-    debugger;
-    const uCommand = command.toUpperCase()
+  function donwloadResume(){}
 
-    if (!isValidCommand(uCommand)) {
+  function handleChangeCommand(originalText:string,args: string[]):void  {
+
+    if (args.length > 1) {
+      log(originalText,"too many args passed to cd");
+      return;
+    }
+
+    let directory = args[0] ?? "";
+
+    let validDirectories = ["about","projects","contact"];
+
+    if (!validDirectories.includes(directory)) {
+      log(originalText,`invalid directory ${directory}. valid directories are about, projects, and contact`);
+      return;
+    }
+
+    router.push({name:directory});
+
+
+
+  }
+
+  function handleCommand(command: string) {
+
+    command = command.toLowerCase();
+
+    const cmd = command.split(' ')[0] ?? "";
+
+    const args = command.split(' ').slice(1);
+
+
+    if (!isValidCommand(cmd)) {
       log(command, 'Invalid command received')
       return
     }
-
-    const cmd = uCommand as Command
 
     switch (cmd) {
 
       case Command.HELP :
       case Command.QUESTION:
-        log(command, 'Available commands: help, clear, cd')
-        break
-
+        log(command, 'Available commands: help, clear, cd, resdump')
+      break
 
       case Command.CLEAR:
         terminalOutputList.value = []
-          showPanel.value = false;
-        break
+        showPanel.value = false;
+      break
 
-
-      case Command.ABOUT:
-        log(command, 'About command received')
-        break
-      case Command.PROJECTS:
-        log(command, 'Projects command received')
-        break
-      case Command.CONTACT:
-        log(command, 'Contact command received')
-        break
       case Command.HOME:
         showPanel.value = true;
-        break
+      break
+
+      case Command.CD:
+        handleChangeCommand(command,args);
+      break;
+
+      case Command.DUMP:
+        donwloadResume();
+      break;
+
       default:
         log(command, 'Invalid command received');
     }
@@ -62,16 +102,9 @@
     console.log(`Running command: ${command}`)
   }
 
-  const router = useRouter()
 
-  function slugify(title: string) {
-    return title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')
-  }
 
-  function openProject(title: string) {
-    const id = slugify(title)
-    router.push({ name: 'project', params: { id } })
-  }
+
 
   onMounted(() => {
 
@@ -108,7 +141,7 @@
       />
     </div>
 
-    <TerminalInput @submit="handleCommand" />
+    <TerminalInput @submit="handleCommand" :historyStack="historyStack" />
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-8" v-if="showPanel">
 
