@@ -16,50 +16,14 @@ export type SidebarLink = {
 
 export const projectCards: ProjectCardData[] = [
   {
-    title: 'SUPPORT DASHBOARD',
-    subtitle: 'Internal staff tooling',
+    title: 'DARAOS',
+    subtitle: 'Rust / OS kernel / bare metal',
     size: '—',
-    date: 'CURRENT',
+    date: '2026-PRESENT',
     description:
-      'Internal dashboard built to help staff handle support-side operational tasks, including database backups and restores used for testing and bug investigations.',
-    badges: ['INTERNAL', 'OPS', 'SUPPORT'],
-  },
-  {
-    title: 'AI-ASSISTED QA PIPELINE',
-    subtitle: 'Test automation & scaffolding',
-    size: '—',
-    date: 'CURRENT',
-    description:
-      'Automation pipeline where AI helps generate test cases while I design and maintain the underlying framework, runners, and workflow scaffolding.',
-    badges: ['AI', 'QA', 'AUTOMATION'],
-  },
-  {
-    title: 'SUPPORT TICKETING SYSTEM',
-    subtitle: 'Linear integration & workflow sync',
-    size: '—',
-    date: 'CURRENT',
-    description:
-      'Support-ticketing workflow that integrates with Linear to centralize customer issues, reduce tracking friction, and improve visibility across support and engineering.',
-    badges: ['LINEAR', 'INTEGRATION', 'WORKFLOW'],
-  },
-  {
-    title: 'TYPESIFT MODULE V2 UPLIFT',
-    subtitle: 'Angular / C# refactor',
-    size: '—',
-    date: 'CURRENT',
-    description:
-      'Large-scale refactor of an existing Typesift module, pairing a refreshed UI with structural cleanup and several new product features as part of the v2 rollout.',
-    badges: ['ANGULAR', 'UI', 'REFACTOR'],
-  },
-  {
-    title: 'COURSE MANAGEMENT SYSTEM',
-    subtitle: 'Java / Spring Boot / Vue 3',
-    size: '—',
-    date: '2025-PRESENT',
-    description:
-      'Full-stack course manager built to organize courses, tasks, and deadlines using Spring Boot, SQLite, Vue 3, Pinia, and reusable dashboard views.',
-    links: [{ label: 'VIEW GITHUB', href: 'https://github.com/DAjayi27/cms' }],
-    badges: ['JAVA', 'SPRING BOOT', 'VUE 3', 'SQLITE'],
+      'Custom operating system and kernel project written in Rust, focused on low-level systems programming, bare-metal experimentation, and cross-platform kernel development.',
+    links: [{ label: 'VIEW GITHUB', href: 'https://github.com/DAjayi27/dos' }],
+    badges: ['RUST', 'OSDEV', 'LOW LEVEL'],
   },
   {
     title: 'PHYSICS ENGINE',
@@ -72,20 +36,50 @@ export const projectCards: ProjectCardData[] = [
     badges: ['C++', 'SDL3', 'PHYSICS', 'TESTING'],
   },
   {
-    title: 'DARAOS',
-    subtitle: 'Rust / OSDev / QEMU',
+    title: 'COURSE MANAGEMENT SYSTEM',
+    subtitle: 'Java / Spring Boot / Vue 3',
     size: '—',
-    date: '2026-PRESENT',
+    date: '2025-PRESENT',
     description:
-      'Custom operating system kernel project in Rust focused on low-level systems work, platform experimentation, VGA text output, and serial-debug workflows.',
-    links: [{ label: 'VIEW GITHUB', href: 'https://github.com/DAjayi27/dos' }],
-    badges: ['RUST', 'OSDEV', 'LOW LEVEL'],
+      'Full-stack course manager built to organize courses, tasks, and deadlines using Spring Boot, SQLite, Vue 3, Pinia, and reusable dashboard views.',
+    links: [{ label: 'VIEW GITHUB', href: 'https://github.com/DAjayi27/cms' }],
+    badges: ['JAVA', 'SPRING BOOT', 'VUE 3', 'SQLITE'],
+  },
+  {
+    title: 'HTTP SERVER',
+    subtitle: 'C / networking / from scratch',
+    size: '—',
+    date: '2022-2026',
+    description:
+      'HTTP server implementation built from scratch in C, with a custom request-handling structure, logging utilities, and a simple project layout driven by CMake.',
+    links: [{ label: 'VIEW GITHUB', href: 'https://github.com/DAjayi27/HTTP-Server' }],
+    badges: ['C', 'HTTP', 'NETWORKING'],
+  },
+  {
+    title: 'DATA STRUCTURES',
+    subtitle: 'Java / algorithms / fundamentals',
+    size: '—',
+    date: '2024',
+    description:
+      'Collection of foundational data structures and algorithm implementations in Java, built to deepen core CS understanding through hands-on implementation work.',
+    links: [{ label: 'VIEW GITHUB', href: 'https://github.com/DAjayi27/DataStructures' }],
+    badges: ['JAVA', 'DATA STRUCTURES', 'ALGORITHMS'],
+  },
+  {
+    title: 'ALGO VIZUALIZER',
+    subtitle: 'Java / algorithm visualization',
+    size: '—',
+    date: '2024',
+    description:
+      'Java-based algorithm visualization project designed to make core algorithm behavior easier to explore and understand through interactive visual output.',
+    links: [{ label: 'VIEW GITHUB', href: 'https://github.com/DAjayi27/AlgoVizualizer' }],
+    badges: ['JAVA', 'VISUALIZATION', 'EDUCATION'],
   },
   {
     title: 'SQL PARSER',
-    subtitle: 'Python / data utility',
+    subtitle: 'Python / CSV to SQL',
     size: '—',
-    date: '2024',
+    date: '2024-2025',
     description:
       'Utility that converts CSV input into SQL INSERT statements for relational database seeding and lightweight migration workflows.',
     links: [{ label: 'VIEW GITHUB', href: 'https://github.com/DAjayi27/SQL-Parser' }],

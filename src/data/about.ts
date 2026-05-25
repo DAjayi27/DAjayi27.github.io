@@ -11,6 +11,7 @@ export const bioData = {
   statusValue: 'Typesift • Software Developer Intern',
   socialLinks: [
     { label: 'GitHub', icon: 'code', href: 'https://github.com/DAjayi27' },
+    { label: 'LinkedIn', icon: 'work', href: 'https://www.linkedin.com/in/darasimiajayi/' },
     { label: 'Email', icon: 'mail', href: 'mailto:DAjayi@dal.ca' },
   ],
 }
