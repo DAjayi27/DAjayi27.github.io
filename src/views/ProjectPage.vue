@@ -1,86 +1,13 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref } from 'vue'
-import { useRouter } from 'vue-router'
 import ProjectMetadataCard from '../components/projects/ProjectMetadataCard.vue'
-
-const router = useRouter()
-
-type SidebarLink = {
-  label: string
-  active?: boolean
-}
+import { projectCards, sidebarLinks } from '@/data/projects'
 
 type SystemMetric = {
   label: string
   value: string
   percent: number
 }
-
-type ProjectCardData = {
-  title: string
-  subtitle: string
-  size: string
-  date: string
-  description: string
-  links?: { label: string; href: string }[]
-  badges?: string[]
-  actions?: { label: string; variant?: 'solid' | 'outline' }[]
-}
-
-const projectCards: ProjectCardData[] = [
-  {
-    title: 'PROJECTS.EXE',
-    subtitle: 'EXECUTABLE FILE - V2.4.0',
-    size: '124 KB',
-    date: '04-12-94',
-    description: 'A comprehensive dashboard for asset management.',
-    links: [
-      { label: 'VIEW GITHUB', href: '#' },
-      { label: 'LIVE PREVIEW', href: '#' },
-    ],
-    badges: ['SECURE', 'READ-ONLY'],
-    actions: [
-      { label: 'RUN_PROCESS', variant: 'solid' },
-    ],
-  },
-  {
-    title: 'NET_DRV.SYS',
-    subtitle: 'SYSTEM DRIVER - V0.1.2',
-    size: '48 KB',
-    date: '05-01-94',
-    description: 'Low-level network driver for TCP/IP packet interception.',
-    links: [
-      { label: 'VIEW SOURCE', href: '#' },
-    ],
-    badges: ['SYSTEM', 'NETWORK'],
-    actions: [
-      { label: 'DEBUG_IO', variant: 'outline' },
-    ],
-  },
-  {
-    title: 'UI_SHELL.EXE',
-    subtitle: 'GRAPHICAL ENVIRONMENT - V1.0.0',
-    size: '256 KB',
-    date: '08-08-94',
-    description: 'The primary visual interface for DARA_OS.',
-    links: [
-      { label: 'DOCS', href: '#' },
-      { label: 'REPO', href: '#' },
-    ],
-    badges: ['GUI', 'STABLE', 'DEFAULT'],
-    actions: [
-      { label: 'MOUNT_SHELL', variant: 'solid' },
-      { label: 'VIEW_SRC', variant: 'outline' },
-    ],
-  },
-]
-
-const sidebarLinks: SidebarLink[] = [
-  { label: '/ROOT' },
-  { label: '/DRIVERS' },
-  { label: '/PROJECTS', active: true },
-  { label: '/TRASH' },
-]
 
 const systemMetrics = ref<SystemMetric[]>([
   { label: 'CPU LOAD', value: '42%', percent: 42 },
@@ -92,7 +19,7 @@ let statusTimer: number | undefined
 function refreshSystemMetrics() {
   systemMetrics.value = [
     { label: 'CPU LOAD', value: `${Math.floor(Math.random() * 20) + 35}%`, percent: Math.floor(Math.random() * 20) + 35 },
-    { label: 'DISK IO', value: `${(Math.random() * 30 + 50).toFixed(1)} MB/S`, percent: Math.floor(Math.random() * 30) + 50 },
+    { label: 'DISK IO', value: `${(Math.random() * 30 + 50).toFixed(1)} MB/S`, percent: Math.floor(Math.random() * 30 + 50) },
   ]
 }
 
@@ -128,7 +55,7 @@ onUnmounted(() => {
       <a
         v-for="link in sidebarLinks"
         :key="link.label"
-        :class="[
+        :class=" [
           'px-4 py-2 transition-colors',
           link.active
             ? 'text-primary-fixed-dim font-bold bg-primary-fixed-dim/10 border-l-4 border-primary-fixed-dim'

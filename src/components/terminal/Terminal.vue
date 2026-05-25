@@ -5,6 +5,8 @@
   import Card from '@/components/terminal/Card.vue'
   import { useRouter } from 'vue-router'
   import { Command, isValidCommand } from '@/components/terminal/cli-controller.ts'
+  // import resume asset URL (Vite ?url returns a public URL string)
+  import resumeUrl from '@/data/Resume.pdf?url'
 
 
   const HISTORY_STACK_SIZE = 10;
@@ -13,6 +15,20 @@
   const historyStack = ref<string[]>([])
   const showPanel = ref(false);
   const router = useRouter();
+
+  function donwloadResume(){
+    try {
+      const link = document.createElement('a')
+      link.href = resumeUrl
+      const filename = 'Dajayi_Resume_2025.pdf'
+      link.setAttribute('download', filename)
+      document.body.appendChild(link)
+      link.click()
+      document.body.removeChild(link)
+    } catch (e) {
+      console.warn('Failed to download resume', e)
+    }
+  }
 
 
   function pushHistory(command: string) {
@@ -33,7 +49,6 @@
     await nextTick();
   }
 
-  function donwloadResume(){}
 
   function handleChangeCommand(originalText:string,args: string[]):void  {
 
@@ -194,7 +209,7 @@
       </router-link>
 
 
-      <Card title="RESUME.DOC" size="25.0 KB" date="11-01-94" tag="FILE" icon="article" access="[ ACCESS: READ/WRITE ]"/>
+      <Card title="RESUME.DOC" size="25.0 KB" date="11-01-94" tag="FILE" icon="article" access="[ ACCESS: READ/WRITE ]" @click="donwloadResume"/>
 
 
     </div>

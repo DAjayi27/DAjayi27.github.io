@@ -4,7 +4,7 @@ export enum Command {
   CLEAR = 'clear',
   HOME = 'home',
   CD = 'cd',
-  DUMP = 'objdump',
+  DUMP = 'resdump',
 }
 
 export type ValidCommand = Command
