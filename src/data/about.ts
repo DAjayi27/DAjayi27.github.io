@@ -1,81 +1,63 @@
 export const bioData = {
   description:
-    'Full-Stack Engineer & UI Architect specializing in low-latency system interfaces and high-fidelity user experiences. Focused on bridging the gap between hardware efficiency and intuitive software design.',
-  bullets: ['ARCHITECTURE: MICROSERVICES', 'FRONTEND: REACT/TAILWIND', 'BACKEND: RUST/NODE.JS', 'DEVOPS: KUBERNETES / CI-CD'],
-  statusLabel: 'STATUS',
-  statusValue: 'AVAILABLE_FOR_LINK',
+    'Computer Science student at Dalhousie University and current Software Developer Intern at Typesift. I build full-stack features, internal tools, and automation systems, with hands-on experience across Angular, C#, Spring Boot, Vue, and systems-focused C++/Rust projects.',
+  bullets: [
+    'FULL STACK: ANGULAR / VUE / SPRING BOOT',
+    'BACKEND: C# / JAVA / PHP / SQL',
+    'SYSTEMS: C++ / RUST / SDL3',
+    'TESTING: PLAYWRIGHT / CUCUMBER / QA AUTOMATION',
+  ],
+  statusLabel: 'CURRENT ROLE',
+  statusValue: 'Typesift • Software Developer Intern',
   socialLinks: [
-    { label: 'GitHub', icon: 'code', href: 'https://github.com/' },
-    { label: 'LinkedIn', icon: 'work', href: 'https://www.linkedin.com/' },
+    { label: 'GitHub', icon: 'code', href: 'https://github.com/DAjayi27' },
+    { label: 'Email', icon: 'mail', href: 'mailto:DAjayi@dal.ca' },
   ],
 }
 
 export const educationItems = [
-  { degree: 'M.S. COMPUTER SCIENCE', school: 'CYBERNETICS INSTITUTE', years: '2018-2020' },
-  { degree: 'B.S. INTERACTIVE DESIGN', school: 'STATE POLYTECHNIC', years: '2014-2018' },
-  { degree: 'DIPLOMA: EMBEDDED SYSTEMS', school: 'TECHNICAL COLLEGE', years: '2012-2014' },
+  {
+    degree: 'BACHELOR OF COMPUTER SCIENCE',
+    school: 'Dalhousie University • Halifax, NS • GPA 4.17/4.30',
+    years: 'JAN 2023 - JAN 2027',
+  },
 ]
 
 export const experienceItems = [
   {
-    title: 'SENIOR CORE ENGINEER',
-    company: 'NEURAL-SYNAPSE CORP',
-    years: '2021-PRESENT',
+    title: 'SOFTWARE DEVELOPER INTERN',
+    company: 'Typesift',
+    years: 'CURRENT',
     bullets: [
-      '- Architected distributed rendering pipeline for VR/AR kernels.',
-      '- Reduced latency by 45% using custom memory allocation algorithms.',
-      '- Reduced latency by 45% using custom memory allocation algorithms.',
-      '- Reduced latency by 45% using custom memory allocation algorithms.',
+      '- Delivering full-stack product work in Angular and C#, including bug fixes, feature enhancements, and UI updates across internal modules.',
+      '- Built an AI-assisted QA workflow that uses AI-generated test cases with a scaffolded automation structure to speed up validation.',
+      '- Developed a support-ticketing system that integrates with Linear to centralize customer issues and streamline follow-up.',
+      '- Contributing to a major v2 uplift of an existing module, with a broad UI refactor and several new features in flight.',
+      '- Building an internal support dashboard for operational tasks such as database backups/restores used in testing and investigations.',
     ],
     tag: 'ACTIVE',
   },
   {
-    title: 'SYSTEM ARCHITECT',
-    company: 'GRID_FLOW SYSTEMS',
-    years: '2019-2021',
-    bullets: ['- Lead developer for the initial DARA_OS prototype UI.'],
-  },
-  {
-    title: 'LEAD FIRMWARE ENGINEER',
-    company: 'CORETEK SOLUTIONS',
-    years: '2016-2019',
+    title: 'SOFTWARE DEVELOPER',
+    company: 'Nautel Ltd',
+    years: 'MAY 2025 - AUG 2025',
     bullets: [
-      '- Designed real-time firmware for low-power sensor arrays.',
-      '- Coordinated cross-team integration with cloud telemetry pipelines.',
+      '- Improved automated testing infrastructure inside an Agile team, helping reduce QA workload and expand coverage by 25%.',
+      '- Authored and maintained 150+ end-to-end tests with TypeScript, Playwright, and Cucumber to catch regressions earlier.',
+      '- Standardized 200+ test IDs across application pages and documented conventions to make test authoring easier for QA and developers.',
+      '- Strengthened repo health with a shared linter, better Cucumber tagging rules, and Husky hooks for commit and push checks.',
     ],
   },
   {
-    title: 'EMBEDDED SYSTEMS ENGINEER',
-    company: 'NOVA DEVICES',
-    years: '2014-2016',
-    bullets: ['- Implemented hardware abstraction layers and board bring-up.' ],
-  },
-  {
-    title: 'RESEARCH INTERN',
-    company: 'INSTITUTE FOR COMPUTING',
-    years: '2013',
-    bullets: ['- Assisted in prototyping spatial-compute scheduling algorithms.'],
-  },
-  // Volunteer / community entries merged into experience list
-  {
-    title: 'OPEN-SOURCE MAINTAINER',
-    company: 'Retro_Terminal_Kit (GitHub)',
-    bullets: ['- Maintained and curated the retro terminal UI toolkit.'],
-  },
-  {
-    title: 'TECH MENTOR',
-    company: 'CodeForHumanity Non-Profit',
-    bullets: ['- Mentored students in fullstack and systems development.'],
-  },
-  {
-    title: 'CONFERENCE SPEAKER',
-    company: 'OSDEV Summit 2022',
-    bullets: ['- Presented on low-latency UI patterns for embedded GUIs.'],
-  },
-  {
-    title: 'WORKSHOP LEAD',
-    company: 'Local Hack Day - Embedded Systems',
-    bullets: ['- Led hands-on workshops on embedded board bring-up.'],
+    title: 'FULL STACK DEVELOPER',
+    company: 'SimplyCast',
+    years: 'SEP 2024 - DEC 2024',
+    bullets: [
+      '- Resolved 50+ bug tickets as part of a 3-developer Agile team, helping cut backlog volume from 200+ issues to about 90.',
+      '- Diagnosed and fixed complex PHP and JavaScript issues with Chrome DevTools and Xdebug, reducing debugging time on high-priority cases.',
+      '- Worked across Angular, Vue, PHP, MySQL, and API endpoints to fix defects, improve data flow, and stabilize production behavior.',
+      '- Partnered with senior developers on more complex issues, incorporating feedback early to improve solution quality.',
+    ],
   },
 ]
 
